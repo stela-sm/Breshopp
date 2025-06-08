@@ -1,0 +1,549 @@
+.banner{
+    background-image: url('img/banner1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 400px;
+}
+.format{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ============================================================
+ * Estilos Específicos da Página Home
+ * Complementa os estilos do Tailwind
+ * ============================================================ */
+
+/* -------------------------------
+ * Swiper (Carrossel)
+ * ------------------------------- */
+.swiper {
+    width: 100%;
+    padding: 20px 0 40px !important;
+}
+
+.swiper-slide {
+    width: auto !important;
+    height: auto !important;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    background-color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: #3B5330 !important;
+    font-weight: bold;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    font-size: 16px !important;
+    font-weight: bold;
+}
+
+.swiper-pagination-bullet {
+    @apply bg-custom-green/30;
+}
+
+.swiper-pagination-bullet-active {
+    @apply bg-custom-olive;
+}
+
+/* Carrossel de doações */
+.donationSwiper {
+    @apply pb-12;
+}
+
+/* -------------------------------
+ * Animações Personalizadas
+ * ------------------------------- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* -------------------------------
+ * Hero Section
+ * ------------------------------- */
+#hero {
+    scroll-margin-top: 80px;
+}
+
+/* -------------------------------
+ * Cards de Destaque e Doações
+ * ------------------------------- */
+.featured-card,
+.donation-card {
+    transition: all 0.3s ease;
+}
+
+.featured-card:hover,
+.donation-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.donation-card {
+    border: 1px solid #E0E4CC;
+    width: 320px;
+}
+
+/* -------------------------------
+ * Cards de Categoria
+ * ------------------------------- */
+.category-card {
+    @apply group relative rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 h-64 flex flex-col items-center justify-center text-center;
+    transform: scale(1);
+    will-change: transform;
+}
+
+.category-card:hover {
+    transform: scale(1.02);
+}
+
+/* -------------------------------
+ * Botões
+ * ------------------------------- */
+.btn-primary {
+    @apply bg-custom-olive text-white font-bold py-3 px-6 rounded-full hover:bg-custom-olive/90 transition-all duration-300 flex items-center gap-2;
+    transform: scale(1);
+    will-change: transform;
+}
+
+.btn-primary:hover {
+    transform: scale(1.05);
+}
+
+.btn-secondary {
+    @apply bg-transparent text-custom-green border-2 border-custom-olive/30 font-bold py-3 px-6 rounded-full hover:bg-custom-olive/10 transition-all duration-300 flex items-center gap-2;
+    transform: scale(1);
+    will-change: transform;
+}
+
+.btn-secondary:hover {
+    transform: scale(1.05);
+}
+
+.btn-search {
+    @apply bg-custom-green text-white px-4 py-2 rounded-r-lg hover:bg-custom-olive transition cursor-pointer;
+    transform: scale(1);
+    will-change: transform;
+}
+
+.btn-search:hover {
+    transform: scale(1.02);
+}
+
+/* -------------------------------
+ * Navegação
+ * ------------------------------- */
+.nav-link {
+    @apply hover:text-custom-olive transition-all duration-200  py-1 px-2 rounded hover:bg-custom-olive/10;
+    font-family: Montserrat;
+    transform: scale(1);
+    transition: 0.2s;
+    will-change: transform;
+}
+
+.nav-link:hover {
+    transition: 0.2s;
+    transform: scale(1.08);
+}
+
+.mobile-nav-link {
+    @apply hover:text-custom-olive transition py-3 px-4 text-left rounded-lg hover:bg-custom-olive/10 w-full;
+}
+
+.footer-link {
+    @apply text-sm md:text-base text-white/80 hover:text-custom-olive transition-colors;
+}
+
+.header-icon {
+    @apply p-2 rounded-full hover:bg-custom-olive/10 cursor-pointer transition-all duration-300;
+    transform: scale(1.1);
+    will-change: transform;
+    transition:0.2s;
+}
+
+.header-icon:hover {
+    transition:0.2s;
+    transform: scale(1.3);
+}
+
+/* -------------------------------
+ * Animações baseadas em data-attributes
+ * ------------------------------- */
+[data-animate] {
+    opacity: 0;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+[data-animate="fade-in"] {
+    transform: translateY(20px);
+}
+
+[data-animate="fade-in-up"] {
+    transform: translateY(40px);
+}
+
+[data-animate="fade-in-left"] {
+    transform: translateX(-40px);
+}
+
+[data-animate="fade-in-right"] {
+    transform: translateX(40px);
+}
+
+[data-animate].animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+[data-animate="fade-in-left"].animate,
+[data-animate="fade-in-right"].animate {
+    transform: translateX(0);
+}
+
+/* -------------------------------
+ * Scroll Suave e Scrollbar
+ * ------------------------------- */
+section {
+    scroll-margin-top: 100px;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* ::-webkit-scrollbar-track {
+    background: var(--custom-cream);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--custom-green);
+    border-radius: 4px;
+} */
+
+/* -------------------------------
+ * Menu Mobile
+ * ------------------------------- */
+#mobile-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+#mobile-menu:not(.hidden) {
+    max-height: 500px;
+}
+
+/* ============================================================
+ * Responsividade
+ * ============================================================ */
+@media (max-width: 640px) {
+    .swiper {
+        padding: 20px 0 30px !important;
+    }
+
+    .donation-card {
+        width: 280px;
+    }
+
+    #hero {
+        height: 60vh;
+    }
+
+    section {
+        scroll-margin-top: 80px;
+    }
+}
+
+
+
+
+
+.body {
+  background-color: #F1EDE9;
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+
+.banner {
+  position: relative;
+  background-image: url('img/freepik__upload__60294.jpeg');
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  width: 100%;
+  overflow: hidden;
+}
+
+
+
+
+
+
+.text-banner{
+   display: flexbox;
+    color: #f8f8f8;
+    padding-top: 150px;
+    padding-left: 100px;
+    font-size: 30px;
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.6);
+
+
+}
+.text1{
+    display: flexbox;
+    color: #f8f8f8;
+    padding-left: 100px;
+    font-size: 30px;
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.6);
+}
+.text2{
+    display: flexbox;
+    color: #E87F89;
+    margin-top:100px ;
+    margin-bottom: 40px;
+    font-size: 35px;
+    text-shadow: 4px 4px 8px #F8F9FA;
+   
+}
+.text3{
+    display: flexbox;
+    color: #E87F89;
+    font-size: 35px;
+    text-shadow: 4px 4px 8px #F8F9FA;
+    text-align: center;
+    justify-content: center;
+}
+
+
+.logo{ background-image: url(img/image-removebg-preview\ \(4\).png);
+    margin-top: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100px;
+    width:285px;
+}
+.smalltext{
+    color:#000000;
+    font-size: 20px;
+    font-weight: 10px;
+    text-align: justify;
+    margin:auto;
+    width: 500px;
+    height: 400px;
+}
+
+.smalltext0{
+    color:#000000;
+    font-size: 20px;
+    font-weight: 10px;
+    text-align: justify;
+    margin:auto;
+    width: 500px;
+    height: 400px;
+}
+
+
+.Moda{
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 50px;
+    display:flex;
+    flex-direction:row;
+    gap:50px;
+    justify-items:center;   
+}
+
+
+
+
+.Moda1{
+    
+    display: flex;
+    flex-direction: column;
+}
+
+
+.img1{
+
+    margin-top: 50px;
+    border-radius: 25px;
+    width: 400px;
+    height: 400px;
+}
+
+
+.align1{
+    display: flexbox;
+    flex-direction: row;
+    gap: 2px;
+}
+.center{
+    padding-top: 50px;
+    margin: auto;
+    display:flex;
+    flex-direction: column;
+    width: 800px;
+    justify-items:center;
+}
+.format1{
+    display: flex;
+    flex-direction: row;
+    margin:auto;
+    justify-content: center;
+}
+
+
+.format0{
+    display: flex;
+    flex-direction: row;
+    margin:auto;
+    justify-content: center;
+    gap: 50px;
+}
+
+.format2{
+    padding-top:10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.smallimg{
+    width: 200px;
+    height: 200px;
+    border-radius: 30px;
+
+
+}
+
+
+.smalltext2{
+    color:#000000;
+    font-size: 20px;
+    font-weight: 10px;
+    text-align: justify;
+    margin-left: 80px;
+    margin-right: 50px;
+    width: 500px;
+}
+
+
+.smalltext3{
+    color:#3B5330;
+    font-size: 20px;
+    font-weight: 10px;
+    text-align: justify;
+    margin-left: 80px;
+    margin-right: 50px;
+    width: 500px
+
+
+}
+
+
+.gap{
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+}
+.smalltext4{
+    color:#E87F89;
+    font-size: 20px;
+    font-weight: 10px;
+    text-align: justify;
+    margin-left: 80px;
+    margin-right: 50px;
+    width: 500px
+
+
+}
+.smalltext5{
+    color:#B9BA79;
+    font-size: 20px;
+    font-weight: 10px;
+    text-align: justify;
+    margin-left: 80px;
+    margin-right: 50px;
+    width: 500px
+
+
+}
+
+
+.smalltext6{
+    color:#000000;
+    font-size: 20px;
+    font-weight: 10px;
+    text-align: justify;
+    margin-left: 80px;
+    margin-right: 50px;
+    width: 700px;
+}
+.buttonpink{
+    background-color:#B9BA79;
+    color:#F1EDE9;
+    width:200px ;
+    height: 50px;
+    border-radius: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px;
+    border-color: #F1EDE9;
+    border: 0px;
+}
+.buttonpink1 {
+    background-color: #E87F89;
+    color: #F1EDE9;
+    width: 200px;
+    height: 50px;
+    border-radius: 15px;
+    margin: 25px auto;
+    display: block;
+    border: 1px solid #E87F89;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .buttonpink1:hover {
+    background-color: transparent;
+    color: #E87F89;
+  }

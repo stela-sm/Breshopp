@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <!-- Configurações básicas do documento -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BreShopp - Moda Sustentável</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon">
+
+    <!-- Fontes do Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Ícones Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Biblioteca de animações -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+    <!-- Framework Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Carrossel Swiper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+    <script src="scripts/bd.js"></script>
+
+    <!-- Configuração personalizada do Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'custom-cream': '#F1EDE9',
+                        'custom-green': '#3B5330',
+                        'custom-olive': '#B9BA79',
+                        'custom-pink': '#E87F89',
+                        'custom-white': '#F8F5F4',
+                        'custom-sage': '#E0E4CC',
+                        'custom-avocado': '#A5A46A',
+                        'custom-earth': '#625F4C',
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.6s ease-out forwards',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" href="style/home.css">
+</head>
+
+<body class="flex flex-col min-h-screen bg-custom-cream">
+    <!-- Cabeçalho fixo no topo -->
+    <header
+        class="bg-custom-cream text-custom-green shadow-md fixed top-0 left-0 right-0 z-50 transition-transform duration-300">
+        <div class="container mx-auto px-4 py-3 h-[65px] flex justify-between items-center">
+            <!-- Logo com link para a seção inicial -->
+            <a href="index.html" class="text-2xl font-bold hover:opacity-80 transition-opacity">
+                <img src="assets/logo/logotipo-original.svg" alt="BreShopp" class="h-10 object-contain">
+            </a>
+
+            <!-- Navegação para desktop -->
+            <nav class="hidden md:flex space-x-8 items-center">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="brechos.html" class="nav-link">Brechós</a>
+                <a href="produtos.html" class="nav-link">Produtos</a>
+                <a href="doar.html" class="nav-link">Doar</a>
+                <a href="sobre.html" class="nav-link">Sobre</a>
+                <a href="contato.html" class="nav-link">Contato</a>
+            </nav>
+
+            <!-- Ações do cabeçalho (ícones) -->
+            <div class="flex items-center space-x-5">
+                <!-- <button id="search-toggle" class="header-icon" aria-label="Pesquisar">
+                    <i class="fas fa-search w-5 h-5"></i>
+                </button> -->
+
+                <a href="carrinhos.html" class="header-icon" aria-label="Carrinho">
+                    <i class="fas fa-shopping-cart w-5 h-5"></i>
+                </a>
+
+                <a href="perfil.html" class="header-icon" aria-label="Perfil">
+                    <i class="fas fa-user w-5 h-5"></i>
+                </a>
+
+                <!-- Botão do menu mobile -->
+                <button id="mobile-menu-toggle" class="md:hidden header-icon" aria-label="Menu">
+                    <i class="fas fa-bars w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Menu mobile (oculto por padrão) -->
+        <div id="mobile-menu" class="md:hidden mt-4 pb-4 px-4 hidden animate__animated animate__fadeInDown">
+            <nav class="flex flex-col space-y-2">
+                <a href="index.html" class="mobile-nav-link">Home</a>
+                <a href="/brechos" class="mobile-nav-link">Brechós</a>
+                <a href="produtos.html" class="mobile-nav-link">Roupas</a>
+                <a href="/doar" class="mobile-nav-link">Doar</a>
+                <a href="sobre.html" class="mobile-nav-link">Sobre</a>
+                <a href="contato.html" class="mobile-nav-link">Contato</a>
+            </nav>
+        </div>
+
+        <!-- Barra de pesquisa (oculta por padrão) -->
+        <div id="search-bar"
+            class="absolute top-full left-0 w-full bg-custom-cream shadow-md z-50 hidden animate__animated animate__fadeIn">
+            <div class="container mx-auto px-4 py-3 flex items-center border-t border-custom-green/20">
+                <form action="/busca" method="GET" class="flex-1 flex">
+                    <input type="text" name="q" id="search-input" placeholder="Pesquisar produtos..."
+                        class="w-full px-4 py-2 rounded-l-lg border border-custom-green focus:outline-none focus:ring-2 focus:ring-custom-olive">
+                    <button type="submit"
+                        class="bg-custom-green text-white px-4 py-2 rounded-r-lg hover:bg-custom-olive transition cursor-pointer">Buscar</button>
+                </form>
+                <button id="search-close"
+                    class="ml-4 p-2 text-custom-green hover:text-custom-olive transition cursor-pointer">
+                    <i class="fas fa-times w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Espaçamento para compensar o cabeçalho fixo -->
+    <div class="h-[65px]"></div>
+
+    <!-- Overlay para o menu mobile -->
+    <div id="mobile-overlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 cursor-pointer hidden"></div>
+
+    <!-- Banner de impacto -->
+    <div id="impact-banner" class="bg-[#E7E1D2] text-custom-green py-4" data-animate="fade-in">
+        <div class="container mx-auto px-4 text-center">
+            <p class="font-medium">
+                <span class="text-custom-pink font-bold">+3.200 roupas</span> já ganharam um novo ciclo através da nossa
+                plataforma <i class="fas fa-leaf text-green-600"></i>
+            </p>
+        </div>
+    </div>
+
+    <!-- Seção Hero (principal) -->
+    <section id="hero" class="relative w-full overflow-hidden h-[75vh] scroll-mt-20 ">
+        <!-- Imagem de fundo (apenas desktop) -->
+        <div class="absolute inset-0 w-full h-full z-0 hidden md:block">
+            <img src="assets/img/wallpaper.png" alt="Moda sustentável" class="object-cover object-center w-full h-full"
+                loading="eager">
+            <div class="absolute inset-0 bg-gradient-to-r from-custom-cream/90 via-custom-cream/50 to-transparent">
+            </div>
+        </div>
+
+        <!-- Conteúdo em primeiro plano -->
+        <div class="relative z-10 h-full flex flex-col lg:scale-90 ">
+            <div class="flex items-center h-full">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="max-w-2xl" data-animate="fade-in-up">
+                        <!-- Selo de oferta -->
+                        <div
+                            class="mb-4 inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-custom-pink/20 text-custom-pink">
+                            <i class="fas fa-shopping-bag mr-1.5"></i>
+                            Frete grátis para todo o Brasil
+                        </div>
+
+                        <!-- Título e subtítulo -->
+                        <h1
+                            class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-custom-green mb-1 leading-tight font-hussar">
+                            Moda Sustentável
+                        </h1>
+
+                        <h2
+                            class="text-3xl sm:text-4xl md:text-5xl font-bold text-custom-pink mb-4 leading-tight font-hussar">
+                            Feita para Você
+                        </h2>
+
+                        <!-- Descrição -->
+                        <p class="text-base md:text-lg text-custom-green/90 mb-6 max-w-md leading-relaxed">
+                            Descubra peças exclusivas com história e ajude a reduzir o impacto ambiental da moda.
+                        </p>
+
+                        <!-- Buttons -->
+                        <div class="flex flex-col sm:flex-row gap-3 mb-8">
+                            <a href="#products"
+                                class="bg-custom-olive text-white font-bold py-3 px-6 rounded-full hover:bg-custom-olive/90 transition flex items-center gap-2">
+                                Ver Produtos <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <a href="#collection"
+                                class="bg-transparent text-custom-green border-2 border-custom-olive/30 font-bold py-3 px-6 rounded-full hover:bg-custom-olive/10 transition">
+                                Ver Coleção
+                            </a>
+                        </div>
+
+                        <!-- Benefícios -->
+                        <div
+                            class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm md:text-base text-custom-green/80">
+                            <span class="flex items-center gap-1.5">
+                                <i class="fas fa-truck text-custom-pink"></i>
+                                Frete grátis
+                            </span>
+                            <span class="flex items-center gap-1.5">
+                                <i class="fas fa-shield-alt text-custom-pink"></i>
+                                Pagamento seguro
+                            </span>
+                            <span class="flex items-center gap-1.5">
+                                <i class="fas fa-leaf text-custom-pink"></i>
+                                Sustentável
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de características -->
+    <section class="py-2 bg-[#E7E1D2] backdrop-blur-sm border-t border-white/20 overflow-hidden">
+        <div class="container mx-auto px-4 flex md:grid md:grid-cols-4 gap-6 text-center" style="min-width: 720px;">
+            <!-- Item 1 -->
+            <div class="flex flex-col items-center px-4 py-2" data-animate="fade-in">
+                <i class="fas fa-truck text-custom-pink text-xl mb-1"></i>
+                <h3 class="text-xs font-semibold text-custom-green">Frete Grátis</h3>
+                <p class="text-[10px] text-custom-green">Confira Condições</p>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="flex flex-col items-center px-4 py-2" data-animate="fade-in">
+                <i class="fas fa-map-marker-alt text-custom-pink text-xl mb-1"></i>
+                <h3 class="text-xs font-semibold text-custom-green">Enviamos</h3>
+                <p class="text-[10px] text-custom-green">para todo Brasil</p>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="flex flex-col items-center px-4 py-2" data-animate="fade-in">
+                <i class="fas fa-credit-card text-custom-pink text-xl mb-1"></i>
+                <h3 class="text-xs font-semibold text-custom-green">Até 12x sem juros</h3>
+                <p class="text-[10px] text-custom-green">10% Off no Boleto</p>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="flex flex-col items-center px-4 py-2" data-animate="fade-in">
+                <i class="fas fa-shield text-custom-pink text-xl mb-1"></i>
+                <h3 class="text-xs font-semibold text-custom-green">100% Seguro</h3>
+                <p class="text-[10px] text-custom-green">Melhores Métodos</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Categorias Premium -->
+    <section id="products" class="bg-custom-cream py-20 px-4 md:px-8 lg:px-12 overflow-hidden scroll-mt-20">
+        <div class="max-w-7xl mx-auto">
+            <!-- Cabeçalho com estilo sofisticado -->
+            <div class="text-center mb-16" data-animate="fade-in">
+                <span
+                    class="inline-block px-4 py-1 mb-4 text-xs font-bold tracking-widest text-custom-green uppercase rounded-full bg-emerald-100">
+                    Coleções em destaque
+                </span>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-custom-green mb-4 font-hussar">
+                    Categorias que amamos 💖</i>
+                </h2>
+                <p class="text-gray-600 text-base md:text-lg max-w-xl mx-auto leading-relaxed">
+                    Estilo, propósito e personalidade. Encontre peças que contam a sua história.
+                </p>
+            </div>
+
+            <!-- Grid de cards premium -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8" data-animate="fade-in-up">
+                <!-- Card 1 - Camisas -->
+                <a href="/categorias/camisas"
+                    class="group relative rounded-xl overflow-hidden shadow-lg transition-all duration-500 hover:shadow-xl h-96">
+                    <!-- Imagem de fundo -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-custom-green/80 to-transparent z-10"></div>
+                    <img src="assets/img/camisa.png" alt="Camisas sustentáveis"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+
+                    <!-- Overlay de conteúdo -->
+                    <div class="absolute bottom-0 left-0 right-0 z-20 p-6 text-center">
+                        <div
+                            class="bg-white/90 backdrop-blur-sm rounded-lg p-4 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                            <h3 class="text-xl font-bold text-custom-green mb-1">Camisas</h3>
+                            <p class="text-sm text-custom-earth/80 mb-2">Peças respiráveis e atemporais</p>
+                            <span class="inline-flex items-center text-xs font-medium text-custom-pink">
+                                Explorar coleção <i class="fas fa-arrow-right ml-1 text-xs"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Badge sustentável -->
+                    <div
+                        class="absolute top-4 right-4 z-20 bg-custom-white/90 text-custom-green text-xs font-bold px-3 py-1 rounded-full flex items-center shadow-sm">
+                        <i class="fas fa-leaf mr-1"></i> Eco-Friendly
+                    </div>
+                </a>
+
+                <!-- Card 2 - Calças -->
+                <a href="/categorias/calcas"
+                    class="group relative rounded-xl overflow-hidden shadow-lg transition-all duration-500 hover:shadow-xl h-96">
+                    <div class="absolute inset-0 bg-gradient-to-t from-custom-earth/80 to-transparent z-10"></div>
+                    <img src="assets/img/calca.jpg" alt="Calças sustentáveis"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+
+                    <div class="absolute bottom-0 left-0 right-0 z-20 p-6 text-center">
+                        <div
+                            class="bg-white/90 backdrop-blur-sm rounded-lg p-4 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                            <h3 class="text-xl font-bold text-custom-green mb-1">Calças</h3>
+                            <p class="text-sm text-custom-earth/80 mb-2">Conforto e estilo consciente</p>
+                            <span class="inline-flex items-center text-xs font-medium text-custom-pink">
+                                Explorar coleção <i class="fas fa-arrow-right ml-1 text-xs"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div
+                        class="absolute top-4 right-4 z-20 bg-custom-white/90 text-custom-green text-xs font-bold px-3 py-1 rounded-full flex items-center shadow-sm">
+                        <i class="fas fa-leaf mr-1"></i> Sustentável
+                    </div>
+                </a>
+
+                <!-- Card 3 - Acessórios -->
+                <a href="/categorias/acessorios"
+                    class="group relative rounded-xl overflow-hidden shadow-lg transition-all duration-500 hover:shadow-xl h-96">
+                    <div class="absolute inset-0 bg-gradient-to-t from-custom-olive/80 to-transparent z-10"></div>
+                    <img src="assets/img/acessorio.png" alt="Acessórios sustentáveis"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+
+                    <div class="absolute bottom-0 left-0 right-0 z-20 p-6 text-center">
+                        <div
+                            class="bg-white/90 backdrop-blur-sm rounded-lg p-4 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                            <h3 class="text-xl font-bold text-custom-green mb-1">Acessórios</h3>
+                            <p class="text-sm text-custom-earth/80 mb-2">Detalhes que fazem diferença</p>
+                            <span class="inline-flex items-center text-xs font-medium text-custom-pink">
+                                Explorar coleção <i class="fas fa-arrow-right ml-1 text-xs"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div
+                        class="absolute top-4 right-4 z-20 bg-custom-white/90 text-custom-green text-xs font-bold px-3 py-1 rounded-full flex items-center shadow-sm">
+                        <i class="fas fa-recycle mr-1"></i> Reciclado
+                    </div>
+                </a>
+
+                <!-- Card 4 - Tênis -->
+                <a href="/categorias/tenis"
+                    class="group relative rounded-xl overflow-hidden shadow-lg transition-all duration-500 hover:shadow-xl h-96">
+                    <div class="absolute inset-0 bg-gradient-to-t from-custom-pink/50 to-transparent z-10"></div>
+                    <img src="assets/img/calcado.png" alt="Tênis sustentáveis"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+
+                    <div class="absolute bottom-0 left-0 right-0 z-20 p-6 text-center">
+                        <div
+                            class="bg-white/90 backdrop-blur-sm rounded-lg p-4 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                            <h3 class="text-xl font-bold text-custom-green mb-1">Calçados</h3>
+                            <p class="text-sm text-custom-earth/80 mb-2">Passos com propósito</p>
+                            <span class="inline-flex items-center text-xs font-medium text-custom-pink">
+                                Explorar coleção <i class="fas fa-arrow-right ml-1 text-xs"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div
+                        class="absolute top-4 right-4 z-20 bg-custom-white/90 text-custom-green text-xs font-bold px-3 py-1 rounded-full flex items-center shadow-sm">
+                        <i class="fas fa-globe-americas mr-1"></i> Eco-Consciente
+                    </div>
+                </a>
+            </div>
+
+            <!-- CTA Premium -->
+            <div class="text-center mt-16" data-animate="fade-in">
+                <a href="/categorias"
+                    class="inline-flex w-fit bg-custom-olive text-white font-bold py-3 px-6 rounded-full hover:bg-custom-olive/90 transition items-center gap-2 group relative">
+                    <span class="relative z-10">Descubra Todas as Categorias</span>
+                    <span
+                        class="absolute inset-0 bg-gradient-to-r from-custom-olive to-custom-avocado rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                    <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banner de upcycling -->
+    <section id="collection" class="w-full relative bg-custom-white overflow-hidden">
+        <!-- Efeitos de fundo decorativos -->
+        <div class="absolute inset-0 opacity-20 pointer-events-none z-0">
+            <div class="absolute top-0 left-0 w-64 h-64 bg-custom-pink/10 rounded-full blur-[80px]"></div>
+            <div class="absolute bottom-0 right-0 w-80 h-80 bg-custom-olive/15 rounded-full blur-[80px]"></div>
+        </div>
+
+        <!-- Conteúdo -->
+        <div class="container mx-auto px-4 sm:px-6 py-16 md:py-24 lg:py-28 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-12 xl:gap-16">
+                <!-- Texto -->
+                <div class="flex-1 max-w-2xl order-2 lg:order-1">
+                    <div class="mb-6 md:mb-8" data-animate="fade-in">
+                        <span
+                            class="inline-flex items-center bg-custom-white/90 text-custom-green text-sm font-semibold px-4 py-2 rounded-full border border-gray-200 shadow-sm">
+                            <i class="fas fa-recycle mr-2"></i> PROGRAMA SUSTENTÁVEL
+                            <span class="ml-2 bg-custom-green text-white text-xs font-bold px-2 py-0.5 rounded-full">
+                                NOVO!
+                            </span>
+                        </span>
+                    </div>
+
+                    <div data-animate="fade-in">
+                        <h2
+                            class="text-4xl md:text-5xl lg:text-[3.5rem] font-extrabold text-custom-earth leading-tight mb-6 font-hussar">
+                            <span class="block">Troque suas roupas</span>
+                            <span
+                                class="block bg-clip-text text-transparent bg-gradient-to-r from-custom-olive to-custom-avocado">
+                                por recompensas
+                            </span>
+                        </h2>
+                    </div>
+
+                    <p class="text-lg text-custom-earth/90 mb-8 leading-relaxed" data-animate="fade-in">
+                        <strong class="text-custom-green font-bold">Ganhe até 30% OFF</strong> na sua próxima compra ao
+                        doar roupas usadas.
+                        Sustentabilidade que transforma seu guarda-roupa e o planeta.
+                    </p>
+
+                    <!-- Benefícios -->
+                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-10" data-animate="fade-in">
+                        <li class="flex items-center text-custom-earth/90">
+                            <i class="fas fa-check-circle text-custom-green mr-3"></i>
+                            +10% a cada 3 peças
+                        </li>
+                        <li class="flex items-center text-custom-earth/90">
+                            <i class="fas fa-check-circle text-custom-green mr-3"></i>
+                            Cupom válido por 60 dias
+                        </li>
+                        <li class="flex items-center text-custom-earth/90">
+                            <i class="fas fa-check-circle text-custom-green mr-3"></i>
+                            Ganhe até 30% OFF
+                        </li>
+                        <li class="flex items-center text-custom-earth/90">
+                            <i class="fas fa-check-circle text-custom-green mr-3"></i>
+                            Embalagens sustentáveis
+                        </li>
+                    </ul>
+
+                    <!-- Buttons -->
+                    <div
+                        class="flex flex-col sm:flex-row gap-4 mb-8 animate__animated animate__fadeIn animate__delay-2s">
+                        <a href="/agendar-coleta"
+                            class="bg-custom-olive text-white font-bold py-3 px-6 rounded-full hover:bg-custom-olive/90 transition flex items-center gap-2">
+                            Agendar coleta <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="/lojas"
+                            class="bg-transparent text-custom-green border-2 border-custom-olive/30 font-bold py-3 px-6 rounded-full hover:bg-custom-olive/10 transition flex items-center gap-2">
+                            Ver lojas parceiras <i class="fas fa-store"></i>
+                        </a>
+                    </div>
+
+                    <!-- Avaliação -->
+                    <div class="flex items-center text-custom-earth/80 gap-3" data-animate="fade-in">
+                        <span class="text-yellow-500"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                        <span>Avaliação: 5/5</span>
+                    </div>
+                </div>
+
+                <!-- Imagem -->
+                <div class="flex-1 flex justify-center relative mt-10 lg:mt-0 order-1 lg:order-2"
+                    data-animate="fade-in-right">
+                    <div class="relative w-full max-w-md xl:max-w-lg">
+                        <div
+                            class="absolute -inset-4 bg-gradient-to-r from-custom-olive/20 to-custom-green/20 rounded-3xl blur-lg -z-10">
+                        </div>
+
+                        <div class="overflow-hidden rounded-2xl border-4 border-white shadow-xl relative">
+                            <img src="assets/img/mocafelizcompras.jpg" alt="Mulher feliz com compras sustentáveis"
+                                class="w-full h-auto object-cover" loading="lazy">
+                        </div>
+
+                        <div
+                            class="absolute -top-5 -right-5 bg-gradient-to-br from-custom-green to-custom-olive text-white font-bold text-xl sm:text-2xl px-4 sm:px-5 py-1 sm:py-2 rounded-full rotate-12 shadow-lg">
+                            30% OFF
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Doações -->
+    <section class="py-20 bg-custom-cream px-4 sm:px-8 lg:px-12 scroll-mt-20">
+        <div class="max-w-6xl mx-auto text-center mb-12" data-animate="fade-in">
+            <span
+                class="inline-block px-4 py-1 mb-4 text-xs font-bold tracking-widest text-custom-green uppercase rounded-full bg-custom-olive/20">
+                <i class="fas fa-hands-helping mr-1"></i> Programa de Doações
+            </span>
+            <h2 class="text-4xl md:text-5xl font-extrabold text-custom-green mb-4 font-hussar">
+                Doe e Transforme Vidas ✨
+            </h2>
+            <p class="text-base sm:text-lg text-custom-earth/80 mt-2 max-w-2xl mx-auto leading-relaxed">
+                Suas roupas podem ter um novo propósito. Conectamos doações a quem realmente precisa.
+            </p>
+        </div>
+
+        <!-- Carrossel de Doações -->
+        <div class="max-w-7xl mx-auto" data-animate="fade-in-up">
+            <div class="swiper donationSwiper">
+                <div class="swiper-wrapper">
+                    <!-- Card 1 -->
+                    <div class="swiper-slide px-2">
+                        <div
+                            class="donation-card bg-white rounded-xl overflow-hidden shadow-sm p-6 flex flex-col h-full text-left">
+                            <div class="flex items-center gap-3 mb-4">
+                                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100&q=80"
+                                    alt="Lar das Crianças"
+                                    class="w-10 h-10 rounded-full object-cover border border-custom-cream">
+                                <div>
+                                    <p class="font-bold text-sm text-custom-green">Lar das Crianças</p>
+                                    <p class="text-xs text-custom-earth/60"><i class="fas fa-map-marker-alt mr-1"></i>
+                                        Vila Mariana - SP</p>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <span
+                                    class="inline-block px-2 py-1 text-xs font-medium bg-custom-pink/10 text-custom-pink rounded-full mb-2">
+                                    <i class="fas fa-tshirt mr-1"></i> Roupas Infantis
+                                </span>
+                                <h3 class="text-lg font-bold text-custom-green leading-tight mb-2">
+                                    Precisamos de roupas para crianças de 2 a 10 anos
+                                </h3>
+                                <p class="text-sm text-custom-earth/70 mb-4">
+                                    Estamos recebendo doações para 120 crianças carentes. Qualquer peça em bom estado é
+                                    bem-vinda!
+                                </p>
+                            </div>
+                            <div class="mt-auto pt-4 border-t border-custom-cream">
+                                <a href="#"
+                                    class="block w-full bg-custom-olive text-white text-center font-semibold py-2 px-4 rounded-lg hover:bg-custom-olive/90 transition flex items-center justify-center gap-2">
+                                    <i class="fas fa-hand-holding-heart"></i> Quero Doar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="swiper-slide px-2">
+                        <div
+                            class="donation-card bg-white rounded-xl overflow-hidden shadow-sm p-6 flex flex-col h-full text-left">
+                            <div class="flex items-center gap-3 mb-4">
+                                <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100&q=80"
+                                    alt="Casa de Apoio"
+                                    class="w-10 h-10 rounded-full object-cover border border-custom-cream">
+                                <div>
+                                    <p class="font-bold text-sm text-custom-green">Casa de Apoio</p>
+                                    <p class="text-xs text-custom-earth/60"><i class="fas fa-map-marker-alt mr-1"></i>
+                                        Centro - RJ</p>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <span
+                                    class="inline-block px-2 py-1 text-xs font-medium bg-custom-olive/10 text-custom-green rounded-full mb-2">
+                                    <i class="fas fa-route mr-1"></i> Calças e Jaquetas
+                                </span>
+                                <h3 class="text-lg font-bold text-custom-green leading-tight mb-2">
+                                    Doações para moradores em situação de rua
+                                </h3>
+                                <p class="text-sm text-custom-earth/70 mb-4">
+                                    Precisamos especialmente de calças e jaquetas para adultos, tamanhos M a GG.
+                                </p>
+                            </div>
+                            <div class="mt-auto pt-4 border-t border-custom-cream">
+                                <a href="#"
+                                    class="block w-full bg-custom-olive text-white text-center font-semibold py-2 px-4 rounded-lg hover:bg-custom-olive/90 transition flex items-center justify-center gap-2">
+                                    <i class="fas fa-hand-holding-heart"></i> Quero Doar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="swiper-slide px-2">
+                        <div
+                            class="donation-card bg-white rounded-xl overflow-hidden shadow-sm p-6 flex flex-col h-full text-left">
+                            <div class="flex items-center gap-3 mb-4">
+                                <img src="https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100&q=80"
+                                    alt="Projeto Renascer"
+                                    class="w-10 h-10 rounded-full object-cover border border-custom-cream">
+                                <div>
+                                    <p class="font-bold text-sm text-custom-green">Projeto Renascer</p>
+                                    <p class="text-xs text-custom-earth/60"><i class="fas fa-map-marker-alt mr-1"></i>
+                                        Belo Horizonte - MG</p>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <span
+                                    class="inline-block px-2 py-1 text-xs font-medium bg-custom-pink/10 text-custom-pink rounded-full mb-2">
+                                    <i class="fas fa-female mr-1"></i> Roupas Femininas
+                                </span>
+                                <h3 class="text-lg font-bold text-custom-green leading-tight mb-2">
+                                    Vestuário para mulheres em vulnerabilidade
+                                </h3>
+                                <p class="text-sm text-custom-earth/70 mb-4">
+                                    Aceitamos roupas, sapatos e acessórios para mulheres que estão reconstruindo suas
+                                    vidas.
+                                </p>
+                            </div>
+                            <div class="mt-auto pt-4 border-t border-custom-cream">
+                                <a href="#"
+                                    class="block w-full bg-custom-olive text-white text-center font-semibold py-2 px-4 rounded-lg hover:bg-custom-olive/90 transition flex items-center justify-center gap-2">
+                                    <i class="fas fa-hand-holding-heart"></i> Quero Doar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="swiper-slide px-2">
+                        <div
+                            class="donation-card bg-white rounded-xl overflow-hidden shadow-sm p-6 flex flex-col h-full text-left">
+                            <div class="flex items-center gap-3 mb-4">
+                                <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100&q=80"
+                                    alt="Abrigo São Francisco"
+                                    class="w-10 h-10 rounded-full object-cover border border-custom-cream">
+                                <div>
+                                    <p class="font-bold text-sm text-custom-green">Abrigo São Francisco</p>
+                                    <p class="text-xs text-custom-earth/60"><i class="fas fa-map-marker-alt mr-1"></i>
+                                        Porto Alegre - RS</p>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <span
+                                    class="inline-block px-2 py-1 text-xs font-medium bg-custom-olive/10 text-custom-green rounded-full mb-2">
+                                    <i class="fas fa-male mr-1"></i> Roupas Masculinas
+                                </span>
+                                <h3 class="text-lg font-bold text-custom-green leading-tight mb-2">
+                                    Agasalhos para o inverno
+                                </h3>
+                                <p class="text-sm text-custom-earth/70 mb-4">
+                                    Estamos coletando casacos, blusas de frio e cobertores para o inverno rigoroso.
+                                </p>
+                            </div>
+                            <div class="mt-auto pt-4 border-t border-custom-cream">
+                                <a href="#"
+                                    class="block w-full bg-custom-olive text-white text-center font-semibold py-2 px-4 rounded-lg hover:bg-custom-olive/90 transition flex items-center justify-center gap-2">
+                                    <i class="fas fa-hand-holding-heart"></i> Quero Doar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 5 -->
+                    <div class="swiper-slide px-2">
+                        <div
+                            class="donation-card bg-white rounded-xl overflow-hidden shadow-sm p-6 flex flex-col h-full text-left">
+                            <div class="flex items-center gap-3 mb-4">
+                                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100&q=80"
+                                    alt="Educar para o Futuro"
+                                    class="w-10 h-10 rounded-full object-cover border border-custom-cream">
+                                <div>
+                                    <p class="font-bold text-sm text-custom-green">Educar para o Futuro</p>
+                                    <p class="text-xs text-custom-earth/60"><i class="fas fa-map-marker-alt mr-1"></i>
+                                        Recife - PE</p>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <span
+                                    class="inline-block px-2 py-1 text-xs font-medium bg-custom-pink/10 text-custom-pink rounded-full mb-2">
+                                    <i class="fas fa-tshirt mr-1"></i> Uniformes Escolares
+                                </span>
+                                <h3 class="text-lg font-bold text-custom-green leading-tight mb-2">
+                                    Uniformes usados em bom estado
+                                </h3>
+                                <p class="text-sm text-custom-earth/70 mb-4">
+                                    Coletamos uniformes escolares para crianças de comunidades carentes.
+                                </p>
+                            </div>
+                            <div class="mt-auto pt-4 border-t border-custom-cream">
+                                <a href="#"
+                                    class="block w-full bg-custom-olive text-white text-center font-semibold py-2 px-4 rounded-lg hover:bg-custom-olive/90 transition flex items-center justify-center gap-2">
+                                    <i class="fas fa-hand-holding-heart"></i> Quero Doar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 6 -->
+                    <div class="swiper-slide px-2">
+                        <div
+                            class="donation-card bg-white rounded-xl overflow-hidden shadow-sm p-6 flex flex-col h-full text-left">
+                            <div class="flex items-center gap-3 mb-4">
+                                <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100&q=80"
+                                    alt="Vida Nova"
+                                    class="w-10 h-10 rounded-full object-cover border border-custom-cream">
+                                <div>
+                                    <p class="font-bold text-sm text-custom-green">Vida Nova</p>
+                                    <p class="text-xs text-custom-earth/60"><i class="fas fa-map-marker-alt mr-1"></i>
+                                        Salvador - BA</p>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <span
+                                    class="inline-block px-2 py-1 text-xs font-medium bg-custom-olive/10 text-custom-green rounded-full mb-2">
+                                    <i class="fas fa-shoe-prints mr-1"></i> Calçados
+                                </span>
+                                <h3 class="text-lg font-bold text-custom-green leading-tight mb-2">
+                                    Sapatos e tênis para todas as idades
+                                </h3>
+                                <p class="text-sm text-custom-earth/70 mb-4">
+                                    Precisamos de calçados em bom estado, números 32 ao 42.
+                                </p>
+                            </div>
+                            <div class="mt-auto pt-4 border-t border-custom-cream">
+                                <a href="#"
+                                    class="block w-full bg-custom-olive text-white text-center font-semibold py-2 px-4 rounded-lg hover:bg-custom-olive/90 transition flex items-center justify-center gap-2">
+                                    <i class="fas fa-hand-holding-heart"></i> Quero Doar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paginação do carrossel -->
+                <div class="swiper-pagination"></div>
+
+                <!-- Navegação do carrossel -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de promoção do app -->
+    <section class="w-full relative bg-custom-white overflow-hidden">
+        <!-- Efeitos de fundo decorativos -->
+        <div class="absolute inset-0 opacity-20 pointer-events-none z-0">
+            <div class="absolute top-0 left-0 w-64 h-64 bg-custom-pink/10 rounded-full blur-[80px]"></div>
+            <div class="absolute bottom-0 right-0 w-80 h-80 bg-custom-olive/15 rounded-full blur-[80px]"></div>
+        </div>
+
+        <!-- Conteúdo -->
+        <div class="container mx-auto px-6 py-16 md:py-20 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
+                <div class="flex-1 max-w-2xl">
+                    <!-- Selo de promoção -->
+                    <div class="mb-8" data-animate="fade-in">
+                        <span
+                            class="inline-flex items-center gap-2 bg-custom-white/90 text-custom-green text-sm font-semibold px-4 py-2 rounded-full border border-gray-200 shadow-sm">
+                            <i class="fas fa-gift"></i>
+                            OFERTA POR TEMPO LIMITADO
+                            <span class="ml-2 bg-custom-green text-white text-xs font-bold px-2 py-0.5 rounded-full">
+                                NOVO!
+                            </span>
+                        </span>
+                    </div>
+
+                    <!-- Título -->
+                    <div class="mb-8" data-animate="fade-in">
+                        <h2 class="text-4xl md:text-5xl font-extrabold text-custom-earth leading-tight font-hussar">
+                            <span class="block">Desconto especial de</span>
+                            <span class="text-custom-pink text-5xl md:text-6xl inline-block">
+                                50% OFF
+                            </span>
+                        </h2>
+                    </div>
+
+                    <!-- Descrição -->
+                    <p class="text-lg text-custom-earth/90 mb-8 leading-relaxed" data-animate="fade-in">
+                        <strong class="font-bold text-custom-earth">Metade do preço</strong> na sua primeira compra pelo
+                        site! Aproveite esta oferta única para renovar seu guarda-roupa com nossas peças premium.
+                    </p>
+
+                    <!-- Benefícios -->
+                    <ul class="space-y-3 mb-10" data-animate="fade-in">
+                        <li class="flex items-center text-custom-earth/90">
+                            <div class="mr-3 flex items-center justify-center w-6 h-6 bg-custom-olive/10 rounded-full">
+                                <i class="fas fa-check text-custom-green"></i>
+                            </div>
+                            Oferta válida por 48h
+                        </li>
+                        <li class="flex items-center text-custom-earth/90">
+                            <div class="mr-3 flex items-center justify-center w-6 h-6 bg-custom-olive/10 rounded-full">
+                                <i class="fas fa-check text-custom-green"></i>
+                            </div>
+                            Frete grátis no primeiro pedido
+                        </li>
+                        <li class="flex items-center text-custom-earth/90">
+                            <div class="mr-3 flex items-center justify-center w-6 h-6 bg-custom-olive/10 rounded-full">
+                                <i class="fas fa-check text-custom-green"></i>
+                            </div>
+                            Pagamento facilitado
+                        </li>
+                        <li class="flex items-center text-custom-earth/90">
+                            <div class="mr-3 flex items-center justify-center w-6 h-6 bg-custom-olive/10 rounded-full">
+                                <i class="fas fa-check text-custom-green"></i>
+                            </div>
+                            Acesso a promoções exclusivas
+                        </li>
+                    </ul>
+
+                    
+
+                    <!-- Temporizador de promoção -->
+                    <div class="p-4 bg-custom-white/80 rounded-lg border border-gray-200 shadow-sm"
+                        data-animate="fade-in">
+                        <div class="flex items-center justify-center gap-3 text-custom-earth">
+                            <i class="fas fa-clock text-custom-earth"></i>
+                            <span class="font-medium">Oferta termina em:</span>
+                            <span class="font-bold text-custom-pink" id="countdown-timer">
+                                48:00:00
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Imagem do app -->
+                <div class="flex-1 flex justify-center relative mt-10 lg:mt-0" data-animate="fade-in-right">
+                    <div class="relative w-full max-w-md">
+                        <div class="absolute -inset-4"></div>
+                        <div class="relative overflow-hidden">
+                            <img src="assets/img/mockup.png" alt="Visual do aplicativo" class="w-full h-auto">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de doação -->
+    <section id="donation" class="py-16 bg-custom-olive text-white overflow-hidden scroll-mt-20">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2 md:pr-8" data-animate="fade-in-left">
+                    <h2 class="text-4xl font-bold mb-6 font-hussar">
+                        Doe roupas paradas no seu armário
+                    </h2>
+                    <p class="mb-8 text-lg">
+                        Sua doação pode ganhar um novo ciclo e ajudar brechós independentes.
+                        Nós cuidamos de toda a logística e você ainda pode acompanhar o impacto da sua doação.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4" data-animate="fade-in">
+                        <a href="/doar"
+                            class="bg-custom-pink text-white font-bold py-3 px-6 rounded-full hover:bg-custom-pink/90 transition flex items-center gap-2 w-full sm:w-auto">
+                            Quero doar <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="/como-funciona"
+                            class="bg-transparent text-white border-2 border-white/50 font-bold py-3 px-6 rounded-full hover:bg-custom-white/10 transition flex items-center gap-2 w-full sm:w-auto">
+                            Como funciona <i class="fas fa-question-circle"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="md:w-1/2" data-animate="fade-in-right">
+                    <div class="bg-custom-white text-custom-green p-8 rounded-xl shadow-2xl">
+                        <h3 class="text-2xl font-bold mb-6 flex items-center gap-2 font-hussar">
+                            <i class="fas fa-hands-helping text-custom-pink"></i>
+                            Impacto da sua doação
+                        </h3>
+                        <div class="space-y-6" data-animate="fade-in">
+                            <!-- Item 1 -->
+                            <div class="flex items-start gap-4">
+                                <div class="bg-custom-pink rounded-full p-2 flex-shrink-0">
+                                    <i class="fas fa-tshirt text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg">+3.200 peças</h4>
+                                    <p class="text-custom-green/80">doadas desde o início</p>
+                                </div>
+                            </div>
+
+                            <!-- Item 2 -->
+                            <div class="flex items-start gap-4">
+                                <div class="bg-custom-pink rounded-full p-2 flex-shrink-0">
+                                    <i class="fas fa-recycle text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg">1.500kg</h4>
+                                    <p class="text-custom-green/80">de têxteis reciclados</p>
+                                </div>
+                            </div>
+
+                            <!-- Item 3 -->
+                            <div class="flex items-start gap-4">
+                                <div class="bg-custom-pink rounded-full p-2 flex-shrink-0">
+                                    <i class="fas fa-store text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg">42 brechós</h4>
+                                    <p class="text-custom-green/80">beneficiados</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="bg-custom-green text-white py-12" aria-labelledby="footer-heading">
+        <div class="container mx-auto">
+            <h2 id="footer-heading" class="sr-only">Rodapé</h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 justify-items-center">
+
+                <!-- Coluna 1 - Sobre -->
+                <div class="space-y-4" data-animate="fade-in">
+                    <img src="assets/logo/logotipo-all-white.svg" alt="BreShopp - Moda Sustentável"
+                        class="w-32 mb-4 h-auto">
+                    <p class="text-sm md:text-base text-white/80">
+                        O BreShopp é um marketplace dedicado à moda sustentável. Conecte-se a brechós e encontre peças
+                        únicas.
+                    </p>
+                    <div class="flex space-x-4 pt-2">
+                        <a href="#" class="text-white/80 hover:text-white transition-colors"><i
+                                class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-white/80 hover:text-white transition-colors"><i
+                                class="fab fa-facebook text-xl"></i></a>
+                        <a href="#" class="text-white/80 hover:text-white transition-colors"><i
+                                class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-white/80 hover:text-white transition-colors"><i
+                                class="fab fa-pinterest text-xl"></i></a>
+                    </div>
+                </div>
+
+                <!-- Coluna 2 - Navegação -->
+                <div class="space-y-4" data-animate="fade-in">
+                    <h3 class="text-lg font-semibold tracking-tight font-hussar">Navegação</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="footer-link">Home</a></li>
+                        <li><a href="brechos.html" class="footer-link">Brechós</a></li>
+                        <li><a href="produtos.html" class="footer-link">Produtos</a></li>
+                        <li><a href="doar.html" class="footer-link">Doar</a></li>
+                        <li><a href="sobre.html" class="footer-link">Sobre</a></li>
+                        <li><a href="contato.html" class="footer-link">Contato</a></li>
+                    </ul>
+                </div>
+
+                <!-- Coluna 3 - Informações -->
+                <div class="space-y-4" data-animate="fade-in">
+                    <h3 class="text-lg font-semibold tracking-tight font-hussar">Informações</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/termos" class="footer-link">Termos de uso</a></li>
+                        <li><a href="/privacidade" class="footer-link">Política de privacidade</a></li>
+                        <li><a href="/trocas" class="footer-link">Trocas e devoluções</a></li>
+                        <li><a href="/faq" class="footer-link">Perguntas frequentes</a></li>
+                    </ul>
+                </div>
+
+                <!-- Coluna 4 - Newsletter e pagamentos -->
+                <div class="space-y-4" data-animate="fade-in">
+                    <h3 class="text-lg font-semibold tracking-tight font-hussar">Newsletter</h3>
+                    <p class="text-sm md:text-base text-white/80">
+                        Assine nossa newsletter para receber novidades e promoções.
+                    </p>
+                    <form class="mt-4 flex">
+                        <input type="email" placeholder="Seu e-mail"
+                            class="px-4 py-2 rounded-l-lg w-full focus:outline-none text-custom-green">
+                        <button type="submit"
+                            class="bg-custom-olive text-white px-4 py-2 rounded-r-lg hover:bg-custom-olive/90 transition">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                    <div class="pt-4">
+                        <h4 class="font-medium mb-2">Formas de pagamento</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <i class="fab fa-cc-visa text-2xl"></i>
+                            <i class="fab fa-cc-mastercard text-2xl"></i>
+                            <i class="fab fa-cc-paypal text-2xl"></i>
+                            <i class="fab fa-cc-amex text-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rodapé inferior -->
+            <div class="border-t border-custom-olive/30 mt-12 pt-8 text-center" data-animate="fade-in">
+                <p class="text-sm md:text-base text-white/80">
+                    © 2025 BreShopp. Todos os direitos reservados.
+                </p>
+                <p class="mt-2 text-xs md:text-sm text-white/60">
+                    Site desenvolvido com <i class="fas fa-heart text-custom-white"></i> para um futuro mais sustentável
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- JavaScript -->
+    <script src="scripts/components/header.js"></script>
+    <script src="scripts/components/footer.js"></script>
+    <script src="scripts/home.js"></script>
+</body>
+
+</html>

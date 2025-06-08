@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+       <!-- Fontes do Google -->
+       <link rel="preconnect" href="https://fonts.googleapis.com">
+       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+       <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<style>
+body{
+    font-family: 'Montserrat', sans-serif;
+}
+</style>
+<body>
+    <script>
+     function sweetAlert(title, text, icon) {
+  Swal.fire({
+    title: title,
+    text: text,
+    icon: icon,
+    showCancelButton: true,
+    confirmButtonText: 'Sim',
+    cancelButtonText: 'Não',
+    reverseButtons: true
+  }).then((result) => {
+    if (result.isConfirmed) {
+      localStorage.removeItem('usuario_logado')
+      window.location.href = 'login.html'; 
+    } else if (result.dismiss === Swal.DismissReason.cancel) {
+         window.location.href = 'index.html'; 
+    }
+  });
+}
+
+
+        usuario_logado = localStorage.getItem('usuario_logado')
+        if(usuario_logado){
+            sweetAlert('Você já está logado!','Deseja realizar o logout?', 'success')
+        }else{
+
+            window.location.href = "login.html";
+        }
+    </script>
+</body>
+</html>

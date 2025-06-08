@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <!--
+    esse é um modelo que contém:
+    - um menu 
+    - um banner 
+    - um rodapé
+    são todos responsivos e padrão em todas as páginas, podendo mudas apenas a imagem e os textos do banner, podem adiiconar ou remover elementos dele também se precisar.
+    A fonte utilizada é MONTSERRAT, as cores estão todas definidas em variáveis no arquivo patterns.css, podem utilizar outras cores se precisarem mas adicionem ali no root.
+
+    Nesta página também foi utilizado o bootstrap para facilitar a responsividade e a organização do código, também o TAILWIND, é uma biblioteca de estilos css, mas não é obrigatório, podem criar os elementos html e os arquivos .css sem problemas.
+    
+    -->
+
+
+
+
+  <!-- Configurações básicas do documento -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BreShopp - Moda Sustentável</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <!-- Fontes do Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Ícones Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Biblioteca de animações -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+  <!-- Framework Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Carrossel Swiper -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+
+  <!-- Configuração personalizada do Tailwind -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'custom-cream': '#F1EDE9',
+            'custom-green': '#3B5330',
+            'custom-olive': '#B9BA79',
+            'custom-pink': '#E87F89',
+            'custom-white': '#F8F5F4',
+            'custom-sage': '#E0E4CC',
+            'custom-avocado': '#A5A46A',
+            'custom-earth': '#625F4C',
+          },
+          animation: {
+            'fade-in-up': 'fadeInUp 0.6s ease-out forwards',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif !important;
+    }
+  </style>
+
+  <!-- CSS personalizado -->
+<script src="scripts/carrinho.js"></script>
+  <link rel="stylesheet" href="style/patterns.css">
+  <link rel="stylesheet" href="style/home.css">
+  <link rel="stylesheet" href="style/carrinho.css">
+  <link rel="stylesheet" href="style/nlog.css">
+</head>
+
+<body class="flex flex-col min-h-screen bg-custom-cream">
+  <!-- Cabeçalho fixo no topo -->
+  <header
+    class="bg-custom-cream text-custom-green shadow-md fixed top-0 left-0 right-0 z-50 transition-transform duration-300">
+    <div class="container mx-auto px-4 py-3 h-[65px] flex justify-between items-center">
+      <!-- Logo com link para a seção inicial -->
+      <a href="index.html" class="text-2xl font-bold hover:opacity-80 transition-opacity">
+        <img src="assets/logo/logotipo-original.svg" alt="BreShopp" class="h-10 object-contain">
+      </a>
+
+      <!-- Navegação para desktop -->
+      <nav class="hidden md:flex space-x-8 items-center">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="brechos.html" class="nav-link">Brechós</a>
+        <a href="produtos.html" class="nav-link">Produtos</a>
+        <a href="doar.html" class="nav-link">Doar</a>
+        <a href="sobre.html" class="nav-link">Sobre</a>
+        <a href="contato.html" class="nav-link">Contato</a>
+      </nav>
+
+      <!-- Ações do cabeçalho (ícones) -->
+      <div class="flex items-center space-x-5">
+        <!-- <button id="search-toggle" class="header-icon" aria-label="Pesquisar">
+                    <i class="fas fa-search w-5 h-5"></i>
+                </button> -->
+
+        <a href="carrinhos.html" class="header-icon" aria-label="Carrinho">
+          <i class="fas fa-shopping-cart w-5 h-5"></i>
+        </a>
+
+        <a href="perfil.html" class="header-icon" aria-label="Perfil">
+          <i class="fas fa-user w-5 h-5"></i>
+        </a>
+     
+
+        <!-- Botão do menu mobile -->
+        <button id="mobile-menu-toggle" class="md:hidden header-icon" aria-label="Menu">
+          <i class="fas fa-bars w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menu mobile (oculto por padrão) -->
+    <div id="mobile-menu" class="md:hidden mt-4 pb-4 px-4 hidden animate__animated animate__fadeInDown">
+      <nav class="flex flex-col space-y-2">
+        <a href="index.html" class="mobile-nav-link">Home</a>
+        <a href="brechos.html" class="mobile-nav-link">Brechós</a>
+        <a href="produtos.html" class="mobile-nav-link">Produtos</a>
+        <a href="doar.html" class="mobile-nav-link">Doar</a>
+        <a href="sobre.html" class="mobile-nav-link">Sobre</a>
+        <a href="contato.html" class="mobile-nav-link">Contato</a>
+      </nav>
+    </div>
+
+    <!-- Barra de pesquisa (oculta por padrão) -->
+    <div id="search-bar"
+      class="absolute top-full left-0 w-full bg-custom-cream shadow-md z-50 hidden animate__animated animate__fadeIn">
+      <div class="container mx-auto px-4 py-3 flex items-center border-t border-custom-green/20">
+        <form action="/busca" method="GET" class="flex-1 flex">
+          <input type="text" name="q" id="search-input" placeholder="Pesquisar produtos..."
+            class="w-full px-4 py-2 rounded-l-lg border border-custom-green focus:outline-none focus:ring-2 focus:ring-custom-olive">
+          <button type="submit"
+            class="bg-custom-green text-white px-4 py-2 rounded-r-lg hover:bg-custom-olive transition cursor-pointer">Buscar</button>
+        </form>
+        <button id="search-close" class="ml-4 p-2 text-custom-green hover:text-custom-olive transition cursor-pointer">
+          <i class="fas fa-times w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+  <!-- Espaçamento para compensar o cabeçalho fixo -->
+  <div class="h-[65px]"></div>
+
+  <!-- Overlay para o menu mobile -->
+  <div id="mobile-overlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 cursor-pointer hidden"></div>
+
+
+
+  <!--O CONTEÚDO DA PAGINA VAI AQUI NO MEIO-->
+<!--Carrinho Vazio-->
+
+<main class="carrinho-vazio" id="carrinhoVazio">
+  <img src="assets/img/carrinho.svg" alt="Carrinho vazio">
+  <h1>SEU CARRINHO ESTÁ VAZIO!</h1>
+  <p class="subtext">Veja nossos produtos e comece a comprar</p>
+  <button class="buy-btn" onclick="window.location.href='produtos.html'">COMPRAR AGORA</button>
+</main>
+
+
+<!-- com itens-->
+
+<div id="carrinhoCheio" class="container mx-auto px-4 flex flex-col md:flex-row gap-6 mt-[10vh]">
+  
+  <!-- Coluna esquerda (Endereço + Pagamento) -->
+  <div class="flex-1 flex flex-col gap-6">
+    <!-- Endereço -->
+    <div class="bg-white p-4 rounded-xl shadow-md flex flex-col gap-2">
+      <h2 class="font-bold text-lg mb-4">Endereço de Envio</h2>
+      <label><input type="checkbox" id="retiradaLocal"> Você retira no local</label>
+<div class="input-mini">
+  <i class="fa-solid fa-location-dot"></i>
+  <input type="text" placeholder="CEP" class="input-endereco ">
+</div>
+<div class="input-mini">
+  <span style="font-weight: bold;">Nº</span>
+  <input type="text" placeholder="Complemento" class="input-endereco">
+</div>
+<div class="input-mini">
+  <i class="fa-solid fa-ticket"></i>
+  <input type="text" placeholder="Nome Completo" class="input-endereco">
+</div>
+
+    </div>
+
+    <!-- Pagamento -->
+    <div class="bg-white p-4 rounded-xl shadow-md flex flex-col">
+      <h2 class="font-bold text-lg mb-4">Método de pagamento</h2>
+      <div class="flex gap-2 mb-4">
+          <label class="payment-option">
+            <input type="radio" name="payment" value="credit"><i class="fa-solid fa-credit-card"></i> Crédito
+          </label>
+          <label class="payment-option">
+            <input type="radio" name="payment" value="pix"><i class="fa-brands fa-pix"></i> Pix
+          </label>
+          <label class="payment-option">
+            <input type="radio" name="payment" value="boleto"><i class="fa-solid fa-barcode"></i> Boleto
+          </label>
+       
+      </div>
+      <!-- Campos do Cartão de Crédito -->
+      <div id="creditFields" class="flex flex-col gap-2">
+        <div class="input-mini ">
+          <i class="fa-solid fa-user"></i>
+          <input type="text" placeholder="Nome no Cartão" class="">
+        </div>
+        <div class="input-mini ">
+          <i class="fa-solid fa-credit-card"></i>
+          <input type="text" placeholder="Número do Cartão" class="">
+        </div>
+        <div class="flex gap-5 flex-row">
+          <div class="input-mini">
+            <i class="fa-solid fa-calendar-days"></i>
+            <select>
+              <option value="" disabled selected>Mês</option>
+              <option value="01">Janeiro</option>
+              <option value="02">Fevereiro</option>
+              <option value="03">Março</option>
+              <option value="04">Abril</option>
+              <option value="05">Maio</option>
+              <option value="06">Junho</option>
+              <option value="07">Julho</option>
+              <option value="08">Agosto</option>
+              <option value="09">Setembro</option>
+              <option value="10">Outubro</option>
+              <option value="11">Novembro</option>
+              <option value="12">Dezembro</option>
+            </select>
+          </div>
+      
+          <div class="input-mini">
+            <i class="fa-solid fa-calendar"></i>
+            <select>
+              <option value="" disabled selected>Ano</option>
+              <option value="2025">2025</option>
+              <option value="2026">2026</option>
+              <option value="2027">2027</option>
+              <option value="2028">2028</option>
+              <option value="2029">2029</option>
+              <option value="2030">2030</option>
+              <option value="2031">2031</option>
+              <option value="2032">2032</option>
+              <option value="2033">2033</option>
+              <option value="2034">2034</option>
+              <option value="2035">2035</option>
+            </select>
+          </div>
+      
+          <div class="input-mini">
+            <i class="fa-solid fa-lock"></i>
+            <input type="text" placeholder="CVV" maxlength="3" inputmode="numeric" />
+          </div>
+        </div>
+      </div>
+      
+      
+      <!-- Campos de Pix -->
+      <div id="pixFields" class="hidden flex flex-col items-center justify-center text-center gap-2 h-[125px]">
+      
+        <i class="fa-solid fa-envelope text-4xl text-black"></i>
+      
+        <p class="text-base text-black font-medium">O código será enviado no seu email!</p>
+      
+      </div>
+
+      
+      <!-- Campos de Boleto -->
+      <div id="boletoFields" class="hidden  flex flex-col gap-3">
+      
+        <div class="input-mini flex flex-row">
+          <i class="fa-solid fa-id-card "></i>
+          <input type="text" placeholder="CPF" class="bg-transparent outline-none w-full text-black/90">
+        </div>
+        <div class="input-mini">
+          <i class="fa-solid fa-ticket "></i>
+          <input type="text" placeholder="Nome Completo" class="bg-transparent outline-none w-full text-black/90">
+        </div>
+        <div class="flex items-start gap-2 mt-2 text-gray-500 text-sm">
+          <i class="fa-solid fa-circle-info mt-1"></i>
+          <span>O boleto será enviado no seu email, com prazo de pagamento de 3 dias úteis</span>
+        </div>
+      
+      </div>
+
+      </div>
+  </div>
+
+  <!-- Coluna direita (Resumo) -->
+  <div class="w-full md:w-1/3 h-full">
+  <div class="w-full max-w-md bg-white rounded-lg shadow-lg p-6 h-[63vh] flex flex-col justify-between">
+    <div class="top" id="produtosCarrinho">
+    <h2 class="text-xl font-bold text-gray-800 mb-6">Resumo</h2>
+  
+    
+  </div>
+  <div class="bottom">
+    <div class="space-y-3 mb-6">
+      <div class="flex justify-between text-gray-700">
+        <span>Subtotal</span>
+        <span id="subTotal" class="font-semibold">R$ 78,00</span>
+      </div>
+      <div class="flex justify-between text-gray-700">
+        <span>Frete</span>
+        <span id="frete" class="font-semibold">R$ 10,00</span>
+      </div>
+      <div class="flex justify-between text-lg font-bold text-gray-800 border-t border-gray-300 pt-3">
+        <span>Total</span>
+        <span id="total">R$ 88,00</span>
+      </div>
+    </div>
+    <button id="finalizarCompra" class="w-full bg-emerald-500 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 ease-in-out
+             hover:bg-white hover:text-emerald-500 border border-emerald-500
+             focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-opacity-75">
+      Finalizar Compra
+    </button>
+
+  </div>
+
+</div>
+
+  </div>
+  
+
+
+
+  <!-- JavaScript  dos botoes da forma de pagamento-->
+  <script>
+
+    const paymentRadios = document.querySelectorAll('input[name="payment"]');
+    const creditFields = document.getElementById('creditFields');
+    const pixFields = document.getElementById('pixFields');
+    const boletoFields = document.getElementById('boletoFields');
+    const checkbox = document.getElementById('retiradaLocal');
+    const inputs = document.querySelectorAll('.input-endereco');
+
+      function toggleInputs() {
+        inputs.forEach(input => {
+          input.disabled = checkbox.checked;
+        });
+      }
+
+      // Executa na mudança do checkbox
+      checkbox.addEventListener('change', toggleInputs);
+
+      // Executa no carregamento para ajustar o estado inicial
+      toggleInputs();
+
+    function updateFields() {
+      creditFields.classList.add('hidden');
+      pixFields.classList.add('hidden');
+      boletoFields.classList.add('hidden');
+
+      const selected = document.querySelector('input[name="payment"]:checked');
+      if (!selected) return;
+
+      switch (selected.value) {
+        case 'credit':
+          creditFields.classList.remove('hidden');
+          break;
+        case 'pix':
+          pixFields.classList.remove('hidden');
+          break;
+        case 'boleto':
+          boletoFields.classList.remove('hidden');
+          break;
+      }
+    }
+
+    paymentRadios.forEach(radio => {
+      radio.addEventListener('change', updateFields);
+    });
+  </script>
+
+
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- JavaScript -->
+  <script src="scripts/components/header.js"></script>
+  <script src="scripts/components/footer.js"></script>
+  <script src="scripts/home.js"></script>
+</body>
+
+</html>

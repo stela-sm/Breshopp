@@ -1,0 +1,297 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f5f5f5;
+  }
+  
+  .content {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin-left:px;
+  }
+  
+  
+  .col-esquerda {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    
+  }
+  
+  .card2, .card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+  
+
+  }
+  
+  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: #fbeaea;
+  }
+  
+  input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: #fbeaea;
+  }
+  
+  
+  .input-group {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .input-group input {
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+  .input-endereco {
+    width: 60%; 
+    max-width: 550px;
+  }
+  .resumo {
+    width: 550px;
+    height: 597px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    align-self: flex-start; /* garante alinhamento independente */
+  }
+  
+  .resumo-produto {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+  
+  .resumo-produto img {
+    width: 50px;
+    border-radius: 6px;
+  }
+  
+  .resumo-produto .info {
+    flex: 1;
+    margin-left: 10px;
+    font-size: 14px;
+  }
+  
+  .resumo-produto .preco {
+    color: #ff4da6;
+    font-weight: bold;
+  }
+  
+  .resumo-totais {
+    font-size: 14px;
+    color: #333;
+    margin-top: 20px;
+  }
+  
+  .resumo-totais div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  
+  .resumo-totais .total {
+    font-weight: bold;
+    font-size: 16px;
+  }
+  
+  .finalizar-btn {
+    background-color: #3cb878;
+    color: white;
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px;
+    border: none;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+
+  .payment-option input[type="radio"] {
+    display: none;
+  }
+  
+  .finalizar-btn:hover {
+    background-color: #349c67;
+  }
+  
+  .hidden {
+    display: none;
+  }
+
+.inline-inputs {
+  display: flex;
+  align-items: center; /* Alinha verticalmente os campos */
+  justify-content: space-between; /* Distribui o espaço entre os campos */
+  gap: 16px; /* Espaçamento entre os campos */
+}
+input:focus {
+  outline: none;
+}
+
+.input-mini {
+  display:flex;
+  flex-direction: row;
+  gap: 4px;
+  padding: 0px 10px;
+  border-radius: 15px;
+  align-items: center;
+  flex: 1; /* Faz com que cada campo ocupe o mesmo espaço */
+  min-width: 100px; /* Define uma largura mínima para os campos */
+  max-width: 60%; 
+  background-color: #fbeaea;
+}
+.input-mini select,
+.input-mini input {
+  width: 100%; /* Faz com que os campos ocupem toda a largura disponível */
+
+  align-self: center;
+  background-color: #fbeaea;
+  height: 100%;
+  border-radius: 6px;
+  font-size: 14px;
+  box-sizing: border-box; 
+  /* Inclui padding e border no cálculo da largura */
+}
+
+
+
+.input-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  margin-top: 10px;
+}
+
+.input-wrapper i {
+  position: absolute;
+  top: 50%;
+  left: 12px; /* Distância da borda esquerda */
+  transform: translateY(-50%);
+  color: #999;
+  font-size: 16px;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 10px 10px 10px 36px; /* padding-left aumentado para dar espaço ao ícone */
+  border: none;
+  border-radius: 8px;
+  background-color: #fbeaea;
+  box-sizing: border-box;
+}
+
+input[disabled]{
+  opacity: 0.5;
+}
+
+ 
+    .card2, .card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+    width: 90%;  /* Altere a largura da caixa para 70% ou outra proporção que desejar */
+    max-width: 660px; 
+     margin-left: 0px; /* Adiciona margem à esquerda */
+}
+
+.col-esquerda {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-left: 30px; /* Adiciona margem à esquerda */
+}
+
+
+
+.input-endereco {
+    width: 100%; 
+    max-width: 640px; 
+}
+
+.payment-option input[type="radio"] {
+  display: none;
+}
+
+.payment-option {
+
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1.5rem; 
+  border: 1px solid #d1d5db; 
+  border-radius: 0.5rem; 
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #6b7280; 
+  transition: all 0.2s ease-in-out; 
+  min-width: 200px; 
+  text-align: center; 
+}
+
+.payment-option i {
+  font-size: 1.8rem; 
+  margin-bottom: 0.5rem;
+  color: #9ca3af; 
+}
+
+.payment-option input[type="radio"]:checked + i,
+.payment-option input[type="radio"]:checked ~ span,
+.payment-option input[type="radio"]:checked ~ .payment-text { 
+  color: #3b82f6; 
+}
+
+.payment-option input[type="radio"]:checked {
+  border-color: #3b82f6; 
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 1px #3b82f6; 
+  color: #1f2937; 
+}
+
+.payment-option input[type="radio"]:checked + i {
+  color: #1f2937;
+}
+
+.payment-option:has(input[type="radio"]:checked) {
+  border-color: #1f2937;
+  color: #1f2937; 
+  background-color: #ffffff; 
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); 
+}
+
+/* Hover effect */
+.payment-option:hover {
+  border-color: #9ca3af; 
+}
+
+.payment-option:hover i {
+  color: #4b5563; 
+}
+
+.payment-option:hover:not(:has(input[type="radio"]:checked)) {
+    background-color: #f9fafb; 
+}
+
+/
+.payment-option:not(:has(input[type="radio"]:checked)) i {
+    color: #d1d5db; 
+}

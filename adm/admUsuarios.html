@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <!-- Configurações básicas do documento -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon">
+
+    <!-- Fontes do Google -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Ícones Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Biblioteca de animações -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <!-- Framework Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Carrossel Swiper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+
+    <!-- Configuração personalizada do Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'custom-cream': '#F1EDE9',
+                        'custom-green': '#3B5330',
+                        'custom-olive': '#B9BA79',
+                        'custom-pink': '#E87F89',
+                        'custom-white': '#F8F5F4',
+                        'custom-sage': '#E0E4CC',
+                        'custom-avocado': '#A5A46A',
+                        'custom-earth': '#625F4C',
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.6s ease-out forwards',
+                    }
+                }
+            }
+        }
+        
+    </script>
+    <style>
+        body{
+            font-family: 'Montserrat', sans-serif;
+            padding: 1.5rem;
+           min-height: 100vh;
+           max-height: 100vh;
+           overflow: hidden;
+        }
+        .filtro-active{
+            font-weight: 800;
+            text-decoration: underline;
+        }
+        .tdmain, .thmain{
+            
+            max-width: 10rem;
+            min-width: 10rem;
+        }
+        .thmain{
+            padding: 10px 10px
+        }
+        .tdmain{
+            padding: 10px 18px;
+        }
+        .modal-backdrop {
+  display: none !important;
+}
+
+    </style>
+
+</head>
+<body>
+    <div class="title">
+        <p class="text-3xl !font-black">
+            Usuários
+        </p>
+        <small class="ml-1">
+            121 usuários encontrados
+        </small>
+    </div>
+
+    <div class="tabela mt-5">
+        <div class="filtros text-sm flex flex-row justify-between w-fit gap-4">
+            <p class="link_tabela cursor-pointer filtro-active" onclick="getUsuariosPadrao()">Todos</p>            
+            <p class="link_tabela cursor-pointer text-gray-500" onclick="console.log('chamou')">Adms</p>
+            <p class="link_tabela cursor-pointer text-gray-500" onclick="console.log('chamou')">Comuns</p>
+            <p class="link_tabela cursor-pointer text-gray-500" onclick="console.log('chamou')">ONGs</p>
+            <p class="link_tabela cursor-pointer text-gray-500" onclick="console.log('chamou')">Rejeitados</p>
+            <p class="link_tabela cursor-pointer text-gray-500" onclick="console.log('chamou')">Aguardando aprovação</p>           
+        </div>
+        <table class="mt-4 w-full text-sm  bg-rose-100 p-5 rounded mb-3 " id="tabelaCabecalho">
+         
+
+        </table>
+
+        <div class="w-full rounded-lg" style="overflow: scroll; overflow-x: hidden ; height: 90vh;">
+
+       <table class="w-full text-sm p-5 rounded mb-3" id="tabelaConteudo">
+       
+
+        </table>
+        </div>
+    </div>
+
+
+   
+    <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true" >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title font-bold" id="TituloModalCentralizado">Edição de usuário </h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                
+                <input type="file" name="" class="hidden" id="alter_pfp">
+                <div class="bg-cover bg-[url(https://th.bing.com/th/id/OIP.VDafgh_qNK01GXcch1RnHQHaHa?cb=iwc2&rs=1&pid=ImgDetMain)] w-[70px] h-[70px] rounded-full mb-2"> 
+                    <i class="pfp fa-solid fa-pen text-rose-600 w-6 h-6 cursor-pointer bg-rose-300 rounded-full self-center p-1"></i>
+                </div>
+            <div class="grid grid-cols-2">
+              <div class="left ">
+                
+                <label class="flex flex-col  pr-2"for=""> <span class="text-xs">Nome Completo</span>
+                <input type="text" name="" id="nome_edit" class="edit_input text-xs bg-rose-100 mb-1 rounded p-2"></label>
+                <label class="flex flex-col  pr-2"for=""> <span class="text-xs">Username</span>
+                <input type="text" name="" id="username_edit" class="edit_input text-xs bg-rose-100 mb-1 rounded p-2"></label>
+                <label class="flex flex-col  pr-2"for=""> <span class="text-xs">Bio</span>
+                    <input type="text" name="" id="bio_edit" disabled class="edit_input text-xs bg-rose-100 mb-1 rounded p-2"></label>
+                <label class="flex flex-col  pr-2"for=""> <span class="text-xs">E-mail</span>
+                <input type="text" name="" id="email_edit" class="edit_input text-xs bg-rose-100 mb-1 rounded p-2"></label>
+                <label class="flex flex-col pr-2"for=""> <span class="text-xs">CPF</span>
+                <input placeholder="XXXXXXXXX-XX" type="text" name="" id="cpf_edit" disabled class="edit_input text-xs bg-rose-100 mb-1 rounded p-2"></label>
+                        
+                
+              </div>
+              <div class="right ">
+                <label class="flex flex-col  pr-2"for=""> <span class="text-xs">Banco</span>
+                    <input placeholder="Selecione..." type="text" name="" id="banco_edit" disabled class="edit_input text-xs bg-rose-100 mb-1 rounded p-2"></label>
+                    <label  class="flex flex-col  pr-2"for=""> <span class="text-xs">Agência</span>
+                    <input placeholder="XXX" type="text" name="" id="agencia_edit" disabled class="edit_input text-xs bg-rose-100 mb-1 rounded p-2"></label>
+                    <label class="flex flex-col  pr-2"for=""> <span class="text-xs">Conta</span>
+                    <input placeholder="XXXXXXX" type="text" name="" id="conta_edit"disabled class="edit_input text-xs bg-rose-100 mb-1 rounded p-2"></label>
+                    <label class="flex flex-col  pr-2"for=""> <span class="text-xs">CEP</span>
+                    <input placeholder="XXXXX-XXX" type="text" name="" id="cep_edit"disabled class="edit_input text-xs bg-rose-100 mb-1 rounded p-2"></label>
+                    <label class="flex flex-col  pr-2"for=""> <span class="text-xs">Complemento</span>
+                    <input placeholder="XX" type="text" name="" id="complemento_edit" disabled class="edit_input text-xs bg-rose-100 mb-1 rounded p-2"></label>
+              </div>
+            </div>
+        </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary rounded text-sm" data-dismiss="modal">Cancelar</button>
+              <button type="button" id="salvarMudancas" class="btn bg-rose-200 rounded text-sm">Salvar mudanças</button>
+            </div>
+          </div>
+        </div>
+
+        
+      </div>
+<!-- Modal Adicionar Usuário -->
+<div class="modal fade" id="modalAddUsuario" tabindex="-1" role="dialog" aria-labelledby="modalAddUsuarioLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title font-bold" id="TituloModalCentralizado">Novo usuário</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Campos do formulário -->
+                <label class="flex flex-col  pr-2" for=""> <span class="text-xs">Nome Completo</span>
+                    <input placeholder="Nome.." type="text" name="" id="novo-nome" class="edit_input text-xs bg-rose-100 mb-1 rounded p-2"></label>
+                <label class="flex flex-col  pr-2" for=""> <span class="text-xs">Username</span>
+                    <input placeholder="@..." type="text" name="" id="novo-username" class="edit_input text-xs bg-rose-100 mb-1 rounded p-2"></label>
+                    <label class="flex flex-col  pr-2" for=""> <span class="text-xs">E-mail</span>
+                        <input placeholder="xx@xx.com" type="email" name="" id="novo-email" class="edit_input text-xs bg-rose-100 mb-1 rounded p-2"></label>
+                    <label class="flex flex-col  pr-2" for=""> <span class="text-xs">Senha</span>
+                        <input placeholder="***" minlength="6" type="text" name="" id="nova-senha" class="edit_input text-xs bg-rose-100 mb-1 rounded p-2"></label>
+                    <label for="administrador" class="text-xs"> <input type="checkbox"  name="Administrador" id="novo-adm"> Administrador
+                        </label>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary rounded text-sm" data-dismiss="modal">Cancelar</button>
+                <button type="button" id="novoUsuario" class="btn bg-rose-200 rounded text-sm">Adicionar usuário</button>
+                </div>
+        </div>
+    </div>
+</div>
+  
+
+
+   
+      
+      <script src="scripts/admUsuarios.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>

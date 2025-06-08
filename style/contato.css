@@ -1,0 +1,400 @@
+.banner{
+    background-image: url('img/banner1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 400px;
+}
+.format{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ============================================================
+ * Estilos Específicos da Página Home
+ * Complementa os estilos do Tailwind
+ * ============================================================ */
+
+/* -------------------------------
+ * Swiper (Carrossel)
+ * ------------------------------- */
+.swiper {
+    width: 100%;
+    padding: 20px 0 40px !important;
+}
+
+.swiper-slide {
+    width: auto !important;
+    height: auto !important;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    background-color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: #3B5330 !important;
+    font-weight: bold;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    font-size: 16px !important;
+    font-weight: bold;
+}
+
+.swiper-pagination-bullet {
+    @apply bg-custom-green/30;
+}
+
+.swiper-pagination-bullet-active {
+    @apply bg-custom-olive;
+}
+
+/* Carrossel de doações */
+.donationSwiper {
+    @apply pb-12;
+}
+
+/* -------------------------------
+ * Animações Personalizadas
+ * ------------------------------- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* -------------------------------
+ * Hero Section
+ * ------------------------------- */
+#hero {
+    scroll-margin-top: 80px;
+}
+
+/* -------------------------------
+ * Cards de Destaque e Doações
+ * ------------------------------- */
+.featured-card,
+.donation-card {
+    transition: all 0.3s ease;
+}
+
+.featured-card:hover,
+.donation-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.donation-card {
+    border: 1px solid #E0E4CC;
+    width: 320px;
+}
+
+/* -------------------------------
+ * Cards de Categoria
+ * ------------------------------- */
+.category-card {
+    @apply group relative rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 h-64 flex flex-col items-center justify-center text-center;
+    transform: scale(1);
+    will-change: transform;
+}
+
+.category-card:hover {
+    transform: scale(1.02);
+}
+
+/* -------------------------------
+ * Botões
+ * ------------------------------- */
+.btn-primary {
+    @apply bg-custom-olive text-white font-bold py-3 px-6 rounded-full hover:bg-custom-olive/90 transition-all duration-300 flex items-center gap-2;
+    transform: scale(1);
+    will-change: transform;
+}
+
+.btn-primary:hover {
+    transform: scale(1.05);
+}
+
+.btn-secondary {
+    @apply bg-transparent text-custom-green border-2 border-custom-olive/30 font-bold py-3 px-6 rounded-full hover:bg-custom-olive/10 transition-all duration-300 flex items-center gap-2;
+    transform: scale(1);
+    will-change: transform;
+}
+
+.btn-secondary:hover {
+    transform: scale(1.05);
+}
+
+.btn-search {
+    @apply bg-custom-green text-white px-4 py-2 rounded-r-lg hover:bg-custom-olive transition cursor-pointer;
+    transform: scale(1);
+    will-change: transform;
+}
+
+.btn-search:hover {
+    transform: scale(1.02);
+}
+
+/* -------------------------------
+ * Navegação
+ * ------------------------------- */
+.nav-link {
+    @apply hover:text-custom-olive transition-all duration-200  py-1 px-2 rounded hover:bg-custom-olive/10;
+    font-family: Montserrat;
+    transform: scale(1);
+    transition: 0.2s;
+    will-change: transform;
+}
+
+.nav-link:hover {
+    transition: 0.2s;
+    transform: scale(1.08);
+}
+
+.mobile-nav-link {
+    @apply hover:text-custom-olive transition py-3 px-4 text-left rounded-lg hover:bg-custom-olive/10 w-full;
+}
+
+.footer-link {
+    @apply text-sm md:text-base text-white/80 hover:text-custom-olive transition-colors;
+}
+
+.header-icon {
+    @apply p-2 rounded-full hover:bg-custom-olive/10 cursor-pointer transition-all duration-300;
+    transform: scale(1.1);
+    will-change: transform;
+    transition:0.2s;
+}
+
+.header-icon:hover {
+    transition:0.2s;
+    transform: scale(1.3);
+}
+
+/* -------------------------------
+ * Animações baseadas em data-attributes
+ * ------------------------------- */
+[data-animate] {
+    opacity: 0;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+[data-animate="fade-in"] {
+    transform: translateY(20px);
+}
+
+[data-animate="fade-in-up"] {
+    transform: translateY(40px);
+}
+
+[data-animate="fade-in-left"] {
+    transform: translateX(-40px);
+}
+
+[data-animate="fade-in-right"] {
+    transform: translateX(40px);
+}
+
+[data-animate].animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+[data-animate="fade-in-left"].animate,
+[data-animate="fade-in-right"].animate {
+    transform: translateX(0);
+}
+
+/* -------------------------------
+ * Scroll Suave e Scrollbar
+ * ------------------------------- */
+section {
+    scroll-margin-top: 100px;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* ::-webkit-scrollbar-track {
+    background: var(--custom-cream);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--custom-green);
+    border-radius: 4px;
+} */
+
+/* -------------------------------
+ * Menu Mobile
+ * ------------------------------- */
+#mobile-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+#mobile-menu:not(.hidden) {
+    max-height: 500px;
+}
+
+/* ============================================================
+ * Responsividade
+ * ============================================================ */
+@media (max-width: 640px) {
+    .swiper {
+        padding: 20px 0 30px !important;
+    }
+
+    .donation-card {
+        width: 280px;
+    }
+
+    #hero {
+        height: 60vh;
+    }
+
+    section {
+        scroll-margin-top: 80px;
+    }
+}
+
+.body {
+  background-color: #F1EDE9;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.banner {
+  position: relative;
+  background-image: url('img/Captura\ de\ tela\ 2025-05-19\ 184332.png');
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.text-banner{
+   display: flexbox;
+    color: #f8f8f8;
+    padding-top: 150px;
+    padding-left: 100px;
+    font-size: 30px; 
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.6);
+
+}
+.text1{
+    display: flexbox;
+    color: #f8f8f8;
+    padding-left: 100px;
+    font-size: 30px;
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.6);
+}
+.text2{
+    display: flexbox;
+    color: #E87F89;
+    margin-top:100px ;
+    margin-bottom: 50px;
+    padding-left: 80px;
+    font-size: 35px;
+    text-shadow: 4px 4px 8px #F8F9FA;
+   
+}
+.text3{
+    display: flexbox;
+    color: #E87F89;
+    font-size: 35px;
+    text-shadow: 4px 4px 8px #F8F9FA;
+    text-align: center;
+    justify-content: center;
+}
+
+.center{
+    padding-top: 50px;
+    margin: auto;
+    display:flex;
+    flex-direction: column;
+    width: 1020px;
+
+}
+.logo{ 
+    background-image: url(img/image-removebg-preview\ \(4\).png);
+    margin-top: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100px;
+    width:285px;
+}
+
+.smalltext{
+    color:#000000;
+    font-size: 20px;
+    font-weight: 10px;
+    text-align: justify;
+    width: 800px;
+}
+
+.buttonpink1 {
+  background-color: #E87F89;
+  color: #F1EDE9;
+  width: 200px;
+  height: 50px;
+  border-radius: 15px;
+  margin: 25px auto;
+  display: block;
+  border: 1px solid #E87F89;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.buttonpink1:hover {
+  background-color: transparent;
+  color: #E87F89;
+}
+.placeholder{
+    width: 100%;
+    padding: 10px 15px;
+    font-family: "Montserrat";
+    margin-top: 6px;
+    outline: 0 !important;
+    border: 0;
+    height:50px ;
+    border-radius: 15px;
+    background-color: #f9f8f1dc;
+}
+#f4{
+    height: 80px;
+}

@@ -1,0 +1,83 @@
+/* 
+ * Arquivo de padrões reutilizáveis
+ * Contém estilos globais e variáveis CSS
+ */
+
+:root {
+    /* Cores da paleta */
+    --custom-cream: #F1EDE9;
+    --custom-green: #3B5330;
+    --custom-olive: #B9BA79;
+    --custom-pink: #E87F89;
+    --custom-earth: #625F4C;
+    --custom-avocado: #A5A46A;
+    
+    /* Espaçamentos padrão */
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 3rem;
+}
+
+@font-face {
+  font-family: 'Hussar Bold';
+  src: url('assets/fonts/HussarBold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('assets/fonts/Montserrat-Regular.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  html {
+    font-family: "Montserrat", sans-serif;
+  }
+  
+  h1, h2 {
+    font-family: "Hussar Bold", sans-serif;
+    font-weight: bold;
+  }
+}
+
+/* Tipografia base */
+body {
+    color: var(--custom-earth);
+
+}
+
+/* Classes utilitárias adicionais */
+.bg-dots {
+    background-image: radial-gradient(var(--custom-green) 1px, transparent 1px);
+    background-size: 15px 15px;
+}
+
+.bg-grid {
+    background-image: linear-gradient(to right, var(--custom-green) 1px, transparent 1px),
+                      linear-gradient(to bottom, var(--custom-green) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+.hover-scale {
+    transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+    transform: scale(1.03);
+}
+
+/* Utilitários de espaçamento */
+.mb-xs { margin-bottom: var(--space-xs); }
+.mb-sm { margin-bottom: var(--space-sm); }
+.mb-md { margin-bottom: var(--space-md); }
+.mb-lg { margin-bottom: var(--space-lg); }
+.mb-xl { margin-bottom: var(--space-xl); }
+.mb-2xl { margin-bottom: var(--space-2xl); }

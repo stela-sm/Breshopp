@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <!--
+    esse é um modelo que contém:
+    - um menu 
+    - um banner 
+    - um rodapé
+    são todos responsivos e padrão em todas as páginas, podendo mudas apenas a imagem e os textos do banner, podem adiiconar ou remover elementos dele também se precisar.
+    A fonte utilizada é MONTSERRAT, as cores estão todas definidas em variáveis no arquivo patterns.css, podem utilizar outras cores se precisarem mas adicionem ali no root.
+
+    Nesta página também foi utilizado o bootstrap para facilitar a responsividade e a organização do código, também o TAILWIND, é uma biblioteca de estilos css, mas não é obrigatório, podem criar os elementos html e os arquivos .css sem problemas.
+    
+    -->
+
+
+
+
+    <!-- Configurações básicas do documento -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BreShopp - Moda Sustentável</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon">
+
+    <!-- Fontes do Google -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Ícones Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Biblioteca de animações -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!-- Framework Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Carrossel Swiper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+    <script>
+        function vermais(id) {
+            console.log(id)
+            url = "produto_individual.html?id=" + id
+            window.location.href = url
+
+
+        }
+    </script>
+    <!-- Configuração personalizada do Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'custom-cream': '#F1EDE9',
+                        'custom-green': '#3B5330',
+                        'custom-olive': '#B9BA79',
+                        'custom-pink': '#E87F89',
+                        'custom-white': '#F8F5F4',
+                        'custom-sage': '#E0E4CC',
+                        'custom-avocado': '#A5A46A',
+                        'custom-earth': '#625F4C',
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.6s ease-out forwards',
+                    }
+                }
+            }
+        }
+    </script>
+    <script>
+        function voltar() {
+            window.location.href = "produtos.html"
+        }
+    </script>
+    <script src="scripts/produto_individual.js"></script>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .preco {
+            color: var(--custom-olive)
+        }
+
+        .rounded-button {
+            border-radius: 10px;
+        }
+
+        .produto-img-div {
+            height: 400px;
+            width: 400px;
+        }
+    </style>
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" href="style/home.css">
+</head>
+
+<body class="flex flex-col min-h-screen bg-custom-cream">
+    <!-- Cabeçalho fixo no topo -->
+    <header
+        class="bg-custom-cream text-custom-green shadow-md fixed top-0 left-0 right-0 z-50 transition-transform duration-300">
+        <div class="container mx-auto px-4 py-3 h-[65px] flex justify-between items-center">
+            <!-- Logo com link para a seção inicial -->
+            <a href="index.html" class="text-2xl font-bold hover:opacity-80 transition-opacity">
+                <img src="assets/logo/logotipo-original.svg" alt="BreShopp" class="h-10 object-contain">
+            </a>
+
+            <!-- Navegação para desktop -->
+            <nav class="hidden md:flex space-x-8 items-center">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="brechos.html" class="nav-link">Brechós</a>
+                <a href="produtos.html" class="nav-link">Produtos</a>
+                <a href="doar.html" class="nav-link">Doar</a>
+                <a href="sobre.html" class="nav-link">Sobre</a>
+                <a href="contato.html" class="nav-link">Contato</a>
+            </nav>
+
+            <!-- Ações do cabeçalho (ícones) -->
+            <div class="flex items-center space-x-5">
+                <!-- <button id="search-toggle" class="header-icon" aria-label="Pesquisar">
+                        <i class="fas fa-search w-5 h-5"></i>
+                    </button> -->
+
+                <a href="carrinhos.html" class="header-icon" aria-label="Carrinho">
+                    <i class="fas fa-shopping-cart w-5 h-5"></i>
+                </a>
+
+                <a href="login.html" class="header-icon" aria-label="Perfil">
+                    <i class="fas fa-user w-5 h-5"></i>
+                </a>
+
+                <!-- Botão do menu mobile -->
+                <button id="mobile-menu-toggle" class="md:hidden header-icon" aria-label="Menu">
+                    <i class="fas fa-bars w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Menu mobile (oculto por padrão) -->
+        <div id="mobile-menu" class="md:hidden mt-4 pb-4 px-4 hidden animate__animated animate__fadeInDown">
+            <nav class="flex flex-col space-y-2">
+                <a href="index.html" class="mobile-nav-link">Home</a>
+                <a href="/brechos" class="mobile-nav-link">Brechós</a>
+                <a href="/roupas" class="mobile-nav-link">Roupas</a>
+                <a href="/doar" class="mobile-nav-link">Doar</a>
+                <a href="sobre.html" class="mobile-nav-link">Sobre</a>
+                <a href="contato.html" class="mobile-nav-link">Contato</a>
+            </nav>
+        </div>
+
+        <!-- Barra de pesquisa (oculta por padrão) -->
+        <div id="search-bar"
+            class="absolute top-full left-0 w-full bg-custom-cream shadow-md z-50 hidden animate__animated animate__fadeIn">
+            <div class="container mx-auto px-4 py-3 flex items-center border-t border-custom-green/20">
+                <form action="/busca" method="GET" class="flex-1 flex">
+                    <input type="text" name="q" id="search-input" placeholder="Pesquisar produtos..."
+                        class="w-full px-4 py-2 rounded-l-lg border border-custom-green focus:outline-none focus:ring-2 focus:ring-custom-olive">
+                    <button type="submit"
+                        class="bg-custom-green text-white px-4 py-2 rounded-r-lg hover:bg-custom-olive transition cursor-pointer">Buscar</button>
+                </form>
+                <button id="search-close"
+                    class="ml-4 p-2 text-custom-green hover:text-custom-olive transition cursor-pointer">
+                    <i class="fas fa-times w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Espaçamento para compensar o cabeçalho fixo -->
+    <div class="h-[100px]"></div>
+
+    <!-- Overlay para o menu mobile -->
+    <div id="mobile-overlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 cursor-pointer hidden"></div>
+
+
+
+
+
+    <div class="lg:!container md:m-0 md:!container-fluid self-center mt-4 max-w-[60%] ">
+        <div class="seta-back mb-0.5 cursor-pointer" onclick="voltar()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-left">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M5 12l14 0" />
+                <path d="M5 12l6 6" />
+                <path d="M5 12l6 -6" />
+            </svg>
+        </div>
+        <div
+            class="produto-div grid gap-x-1 p-4 mt-[3rem] grid-cols-1 lg:grid-cols-[1fr_2fr] md:scale-90 md:mt-[-2%] md:pt-0 md:gap-x-1">
+
+
+
+
+
+
+
+            <div id="produto-img-div" class="produto-img-div !w-[33rem] !h-[35rem] !rounded-lg md:scale-90 bg-cover bg-center rounded-md"
+                style="background-image: url('https://www.lojastyleme.com.br/cdn/shop/files/Vestido-Festa-Acinturado-Curto-Renda-Poa-Alcinha-Branco.webp?v=1700263818');">
+            </div>
+
+
+
+
+
+
+
+
+
+
+            <div class="produto-info-div  md:ml-8 lg:ml-0 md:scale-90 ">
+                <div class="produto-loja-info flex flex-row align-middle gap-2 mb-3 ">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0qCreqkTZL0F0bF9kZctFE1XVFocO__70kw&s"
+                        alt="" class="produto-profile-picture w-[50px] h-[50px] rounded-full">
+                    <p class="produto-loja-nome flex flex-row justify-between items-center w-full h-[50px] ">
+                        @LIMONADA
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="icon icon-tabler icons-tabler-outline icon-tabler-share cursor-pointer">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M6 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                            <path d="M18 6m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                            <path d="M18 18m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                            <path d="M8.7 10.7l6.6 -3.4" />
+                            <path d="M8.7 13.3l6.6 3.4" />
+                        </svg>
+                    </p>
+
+                </div>
+                <div class="produto-descricao flex flex-col gap-5">
+                    <p class="title font-black text-3xl flex flex-col">Vestido Verão<span
+                            class="categorias text-sm font-normal ">Vestidos, Casual e Peça única </span></p>
+                    <p class="descricao text-xl w-[90%] h-[7rem] md:text-md">Lorem Ipsum is simply dummy text of the
+                        printing and typesetting industry. Lorem
+                        Ipsum has been the industry's Lorem Ipsum isrinting and typesetting industry. Lorem
+                        Ipsum has been the industry's .</p>
+                    <p class="preco text-3xl text-green-600 font-black md:text-2xl">
+                        R$39,99 <small class="!font-sm">no pix</small>
+                    </p>
+                    <p class="tamanhos font-bold">
+                        Estado
+                    </p>
+                    <div class="tamanhos flex flex-row gap-3 mt-[-10px]">
+                        <p class="tamanho-circle pr-2 pl-2 pt-1 pb-1 font-bold bg-pink-300 rounded-full">
+                            Poucos usos
+                        </p>
+
+                    </div>
+                    <p class="tamanhos font-bold">
+                        Tamanhos
+                    </p>
+                    <div class="tamanhos flex flex-row gap-3 mt-[-10px]">
+                        <p class="tamanho-circle pr-2 pl-2 pt-1 pb-1 bg-slate-300 rounded-full">
+                            P
+                        </p>
+                    </div>
+                    <button 
+                        class="comprar bg-green-700 hover:bg-transparent border-green-600 border-solid border-1 hover:!text-green-700 transition-all text-lg text-white p-3 w-[10vw] font-bold rounded-button">
+                        COMPRAR
+                    </button>
+                </div>
+
+
+
+            </div>
+
+        </div>
+        <hr>
+        <div class="container mt-[10rem] md:mt-0 md:scale-90">
+            <p class="subtitulo font-bold text-4xl md:text-3xl md:ml-4 md:mt-4 md:mb-0 md:pb-0">
+
+                Talvez você goste
+            </p>
+            <div class="carrossel">
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper" id="produtos_div">
+
+
+                    </div>
+
+                    <!-- Swiper JS -->
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--O CONTEÚDO DA PAGINA VAI AQUI NO MEIO-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            loop: true,
+            slidesPerView: 3,
+            spaceBetween: 20,
+            clickable: false,
+
+
+        });
+    </script>
+</body>
+
+</html>

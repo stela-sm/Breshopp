@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <!--
+    esse é um modelo que contém:
+    - um menu 
+    - um banner 
+    - um rodapé
+    são todos responsivos e padrão em todas as páginas, podendo mudas apenas a imagem e os textos do banner, podem adiiconar ou remover elementos dele também se precisar.
+    A fonte utilizada é MONTSERRAT, as cores estão todas definidas em variáveis no arquivo patterns.css, podem utilizar outras cores se precisarem mas adicionem ali no root.
+
+    Nesta página também foi utilizado o bootstrap para facilitar a responsividade e a organização do código, também o TAILWIND, é uma biblioteca de estilos css, mas não é obrigatório, podem criar os elementos html e os arquivos .css sem problemas.
+    
+    -->
+
+
+
+
+    <!-- Configurações básicas do documento -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BreShopp - Moda Sustentável</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon">
+
+    <!-- Fontes do Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style/patterns.css">
+
+    <!-- Ícones Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Biblioteca de animações -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Framework Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Carrossel Swiper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+
+    <!-- Configuração personalizada do Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'custom-cream': '#F1EDE9',
+                        'custom-green': '#3B5330',
+                        'custom-olive': '#B9BA79',
+                        'custom-pink': '#E87F89',
+                        'custom-white': '#F8F5F4',
+                        'custom-sage': '#E0E4CC',
+                        'custom-avocado': '#A5A46A',
+                        'custom-earth': '#625F4C',
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.6s ease-out forwards',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif !important;
+        }
+    </style>
+    <script>
+        function vermais(id) {
+            console.log(id)
+            url = "produto_individual.html?id=" + id
+            window.location.href = url
+
+
+        }
+    </script>
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" href="style/home.css">
+    <link rel="stylesheet" href="style/patterns.css">
+</head>
+
+<body class="flex flex-col min-h-screen bg-custom-cream">
+    <!-- Cabeçalho fixo no topo -->
+    <header
+        class="bg-custom-cream text-custom-green shadow-md fixed top-0 left-0 right-0 z-50 transition-transform duration-300">
+        <div class="container mx-auto px-4 py-3 h-[65px] flex justify-between items-center">
+            <!-- Logo com link para a seção inicial -->
+            <a href="index.html" class="text-2xl font-bold hover:opacity-80 transition-opacity">
+                <img src="assets/logo/logotipo-original.svg" alt="BreShopp" class="h-10 object-contain">
+            </a>
+
+            <!-- Navegação para desktop -->
+            <nav class="hidden md:flex space-x-8 items-center">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="brechos.html" class="nav-link">Brechós</a>
+                <a href="produtos.html" class="nav-link">Produtos</a>
+                <a href="doar.html" class="nav-link">Doar</a>
+                <a href="sobre.html" class="nav-link">Sobre</a>
+                <a href="contato.html" class="nav-link">Contato</a>
+            </nav>
+
+            <!-- Ações do cabeçalho (ícones) -->
+            <div class="flex items-center space-x-5">
+                <!-- <button id="search-toggle" class="header-icon" aria-label="Pesquisar">
+                    <i class="fas fa-search w-5 h-5"></i>
+                </button> -->
+
+                <a href="carrinhos.html" class="header-icon" aria-label="Carrinho">
+                    <i class="fas fa-shopping-cart w-5 h-5"></i>
+                </a>
+
+                <a href="perfil.html" class="header-icon" aria-label="Perfil">
+                    <i class="fas fa-user w-5 h-5"></i>
+                </a>
+
+                <!-- Botão do menu mobile -->
+                <button id="mobile-menu-toggle" class="md:hidden header-icon" aria-label="Menu">
+                    <i class="fas fa-bars w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Menu mobile (oculto por padrão) -->
+        <div id="mobile-menu" class="md:hidden mt-4 pb-4 px-4 hidden animate__animated animate__fadeInDown">
+            <nav class="flex flex-col space-y-2">
+                <a href="index.html" class="mobile-nav-link">Home</a>
+                <a href="brechos.html" class="mobile-nav-link">Brechós</a>
+                <a href="produtos.html" class="mobile-nav-link">Produtos</a>
+                <a href="doar.html" class="mobile-nav-link">Doar</a>
+                <a href="sobre.html" class="mobile-nav-link">Sobre</a>
+                <a href="contato.html" class="mobile-nav-link">Contato</a>
+            </nav>
+        </div>
+
+        <!-- Barra de pesquisa (oculta por padrão) -->
+        <div id="search-bar"
+            class="absolute top-full left-0 w-full bg-custom-cream shadow-md z-50 hidden animate__animated animate__fadeIn">
+            <div class="container mx-auto px-4 py-3 flex items-center border-t border-custom-green/20">
+                <form action="/busca" method="GET" class="flex-1 flex">
+                    <input type="text" name="q" id="search-input" placeholder="Pesquisar produtos..."
+                        class="w-full px-4 py-2 rounded-l-lg border border-custom-green focus:outline-none focus:ring-2 focus:ring-custom-olive">
+                    <button type="submit"
+                        class="bg-custom-green text-white px-4 py-2 rounded-r-lg hover:bg-custom-olive transition cursor-pointer">Buscar</button>
+                </form>
+                <button id="search-close"
+                    class="ml-4 p-2 text-custom-green hover:text-custom-olive transition cursor-pointer">
+                    <i class="fas fa-times w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Espaçamento para compensar o cabeçalho fixo -->
+    <div class="h-[65px]"></div>
+
+    <!-- Overlay para o menu mobile -->
+    <div id="mobile-overlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 cursor-pointer hidden"></div>
+
+    <!-- Banner de impacto -->
+    <div id="impact-banner" class="bg-[#E7E1D2] text-custom-green py-4" data-animate="fade-in">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm font-bold">
+                <span class="text-custom-pink !font-bold">+3.200 roupas</span> já ganharam um novo ciclo através da nossa
+                plataforma <i class="fas fa-leaf text-green-600"></i>
+            </p>
+        </div>
+    </div>
+
+    <!-- Seção Hero (principal) -->
+    <section id="hero" class="relative w-full overflow-hidden h-[75vh] scroll-mt-20">
+        <!-- Imagem de fundo (apenas desktop) -->
+        <div class="absolute inset-0 w-full h-full z-0 hidden md:block">
+            <img src="assets/img/carrinho.jpg" alt="Moda sustentável" class="object-cover object-center w-full h-full"
+                loading="eager">
+            <!--AQUI É ONDE MUDA  A IMAGEM DO BANNER (NO SRC NO IMG), MAS NÃO SE ALTERA O TAMANHO-->
+            <div class="absolute inset-0 bg-gradient-to-r from-custom-cream/90 via-custom-cream/50 to-transparent">
+            </div>
+        </div>
+
+        <div class="relative z-10 h-full flex flex-col">
+            <div class="flex items-center h-full">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="max-w-2xl" data-animate="fade-in-up">
+                        <!-- Selo de oferta -->
+
+
+                        <!-- Título e subtítulo -->
+                        <h1
+                            class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-custom-green mb-1 leading-tight font-hussar">
+                            O que você precisa,
+                        </h1>
+                        
+                        <h2 class="!text-3xl sm:text-4xl md:text-5xl !font-bold text-custom-pink mb-4 !leading-tight ">
+                            com o preço que você deseja.
+                        </h2>
+
+                        <!-- Buttons -->
+                        <div class="flex items-center w-[70%] bg-white p-4 rounded-md mt-5">
+                            <input type="text" placeholder="O que você busca hoje?"
+                                class=" text-xl flex-grow bg-transparent outline-none px-3 text-gray-600 placeholder-gray-400">
+                            <i class="cursor-pointer fa-solid fa-magnifying-glass text-gray-400"></i>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!--O CONTEÚDO DA PAGINA VAI AQUI NO MEIO-->
+
+
+
+
+
+    <div class="container max-w-screen-xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 xl:pt-3 pb-5 lg:pt-0 lg:scale-90 md:w-[90%]"
+        id="produtos_div">
+
+
+        <!--Os cards estão sendo renderizados aqui com js-->
+
+    </div>
+
+
+
+
+
+
+
+
+    <!-- Rodapé -->
+    <footer class="bg-custom-green text-white py-12" aria-labelledby="footer-heading">
+        <div class="container mx-auto">
+            <h2 id="footer-heading" class="sr-only">Rodapé</h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 justify-items-center">
+                <!-- Coluna 1 - Sobre -->
+                <div class="space-y-4" data-animate="fade-in">
+                    <img src="assets/logo/logotipo-all-white.svg" alt="BreShopp - Moda Sustentável"
+                        class="w-32 mb-4 h-auto">
+                    <p class="text-sm md:text-base text-white/80">
+                        O BreShopp é um marketplace dedicado à moda sustentável. Conecte-se a brechós e encontre peças
+                        únicas.
+                    </p>
+                    <div class="flex space-x-4 pt-2">
+                        <a href="#" class="text-white/80 hover:text-white transition-colors"><i
+                                class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-white/80 hover:text-white transition-colors"><i
+                                class="fab fa-facebook text-xl"></i></a>
+                        <a href="#" class="text-white/80 hover:text-white transition-colors"><i
+                                class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-white/80 hover:text-white transition-colors"><i
+                                class="fab fa-pinterest text-xl"></i></a>
+                    </div>
+                </div>
+
+                <!-- Coluna 2 - Navegação -->
+                <div class="space-y-4" data-animate="fade-in">
+                    <h3 class="text-lg font-semibold tracking-tight font-hussar">Navegação</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="footer-link">Home</a></li>
+                        <li><a href="brechos.html" class="footer-link">Brechós</a></li>
+                        <li><a href="produtos.html" class="footer-link">Produtos</a></li>
+                        <li><a href="doar.html" class="footer-link">Doar</a></li>
+                        <li><a href="sobre.html" class="footer-link">Sobre</a></li>
+                        <li><a href="contato.html" class="footer-link">Contato</a></li>
+                    </ul>
+                </div>
+
+                <!-- Coluna 3 - Informações -->
+                <div class="space-y-4" data-animate="fade-in">
+                    <h3 class="text-lg font-semibold tracking-tight ">Informações</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/termos" class="footer-link">Termos de uso</a></li>
+                        <li><a href="/privacidade" class="footer-link">Política de privacidade</a></li>
+                        <li><a href="/trocas" class="footer-link">Trocas e devoluções</a></li>
+                        <li><a href="/faq" class="footer-link">Perguntas frequentes</a></li>
+                    </ul>
+                </div>
+
+                <!-- Coluna 4 - Newsletter e pagamentos -->
+                <div class="space-y-4" data-animate="fade-in">
+                    <h3 class="text-lg font-semibold tracking-tight font-hussar">Newsletter</h3>
+                    <p class="text-sm md:text-base text-white/80">
+                        Assine nossa newsletter para receber novidades e promoções.
+                    </p>
+                    <form class="mt-4 flex">
+                        <input type="email" placeholder="Seu e-mail"
+                            class="px-4 py-2 rounded-l-lg w-full focus:outline-none text-custom-green">
+                        <button type="submit"
+                            class="bg-custom-olive text-white px-4 py-2 rounded-r-lg hover:bg-custom-olive/90 transition">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                    <div class="pt-4">
+                        <h4 class="font-medium mb-2">Formas de pagamento</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <i class="fab fa-cc-visa text-2xl"></i>
+                            <i class="fab fa-cc-mastercard text-2xl"></i>
+                            <i class="fab fa-cc-paypal text-2xl"></i>
+                            <i class="fab fa-cc-amex text-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rodapé inferior -->
+            <div class="border-t border-custom-olive/30 mt-12 pt-8 text-center" data-animate="fade-in">
+                <p class="text-sm md:text-base text-white/80">
+                    © 2025 BreShopp. Todos os direitos reservados.
+                </p>
+                <p class="mt-2 text-xs md:text-sm text-white/60">
+                    Site desenvolvido com <i class="fas fa-heart text-custom-white"></i> para um futuro mais sustentável
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+
+    <!-- JavaScript -->
+    <script src="scripts/components/header.js"></script>
+    <script src="scripts/components/footer.js"></script>
+    <script src="scripts/home.js"></script>
+    <script src="scripts/produtos.js"></script>
+</body>
+
+</html>
