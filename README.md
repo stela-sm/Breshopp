@@ -71,17 +71,16 @@ git clone https://github.com/seu-usuario/BreshoppOficial.git
 cd BreshoppOficial
 
 # Abra o arquivo index.html no navegador
+```
 
 
 🔐 Login no Sistema
 Você pode criar seu próprio usuário no sistema, ou utilizar um dos acessos de teste abaixo:
 
 👤 Usuário Comum
-E-mail: usuario@breshopp.com
-
+E-mail: usuariobs@gmail.com
 Senha: usuariobs
 
 🛠️ Usuário Administrativo
 E-mail: adm@breshopp.com
-
 Senha: admbs
