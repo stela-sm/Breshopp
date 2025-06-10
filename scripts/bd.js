@@ -66,6 +66,16 @@ function bd() {
         senha: "senha204",
         adm: 0,
       },
+      {   
+        id: 205,
+        nome: "Usuario Teste",
+        username: "usuarioteste",
+        pfp: "pfp204.png",
+        email: "usuariobs@gmail.com",
+        senha: "usuariobs",
+        adm: 0,
+      },
+      
     ];
     
     localStorage.setItem("usuarios_padrao", JSON.stringify(usuarios_padrao));
