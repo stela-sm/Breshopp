@@ -8,9 +8,18 @@ function bd() {
         nome: "BRESHOPP",
         username: "breshopp",
         pfp: "assets/logo/logo-reduzida-rosa.svg",
-        email: "bs@gmail.com",
+        email: "adm@breshopp.com",
         senha: "admbs",
         adm: 1,
+      },
+       {
+        id: 200,
+        nome: "Andrea",
+        username: "breshoprj",
+        pfp: "pfp200.png",
+        email: "andrea@gmail.com",
+        senha: "andrea",
+        adm: 0,
       },
       {
         id: 200,
@@ -79,100 +88,99 @@ function bd() {
 
 
   if (!localStorage.getItem("produtos_breshopp")) {
-    const produtos_breshopp = [
-      
-        {
-          id: 1,
-          titulo: "Camisa Polo",
-          preco: 39.9,
-          img: "produto1.jpg",
-          descricao:
-            "Camisa polo masculina confeccionada em algodão premium de alta qualidade, com gola estruturada, costuras reforçadas e acabamento impecável. Combina conforto, elegância e praticidade, sendo ideal para compor looks casuais ou mais alinhados no dia a dia. Disponível em diversas cores e tamanhos.",
-          ativo: true,
-          id_vendedor: 200,
-        },
-        {
-          id: 2,
-          titulo: "Saia Jeans",
-          preco: 45.99,
-          img: "produto2.webp",
-          descricao:
-            "Saia jeans azul escuro com corte moderno e cintura média, perfeita para valorizar a silhueta. Possui bolsos funcionais frontais e traseiros, passantes para cinto e acabamento com lavagem leve. Ideal para usar com camisetas, camisas ou blusas, tanto no trabalho quanto em momentos de lazer.",
-          ativo: true,
-          id_vendedor: 201,
-        },
-        {
-          id: 3,
-          titulo: "Tênis Esportivo",
-          preco: 89.5,
-          img: "produto3.jpeg",
-          descricao:
-            "Tênis esportivo masculino e feminino com design anatômico, leveza excepcional e tecido respirável que proporciona maior ventilação. Solado emborrachado antiderrapante, palmilha de espuma de alta absorção e cadarços reforçados garantem segurança, conforto e estilo nas suas caminhadas, treinos ou corridas.",
-          ativo: true,
-          id_vendedor: 202,
-        },
-        {
-          id: 4,
-          titulo: "Vestido Floral",
-          preco: 59.99,
-          img: "produto4.webp",
-          descricao:
-            "Vestido floral feminino com estampa delicada e colorida, tecido leve e toque macio. Possui caimento soltinho, alças finas reguláveis, decote em V e barra levemente rodada. Perfeito para dias quentes, festas ao ar livre ou eventos durante o verão. Um look fresco, romântico e versátil.",
-          ativo: true,
-          id_vendedor: 201,
-        },
-        {
-          id: 5,
-          titulo: "Jaqueta de Couro",
-          preco: 120.0,
-          img: "produto5.jpg",
-          descricao:
-            "Jaqueta de couro legítimo com design sofisticado, forro térmico interno para manter o corpo aquecido, zíper frontal robusto, bolsos funcionais laterais e peito com botão. Gola alta ajustável e acabamento premium fazem dela uma peça-chave para os dias mais frios, combinando elegância com atitude urbana.",
-          ativo: false,
-          id_vendedor: 203,
-        },
-        {
-          id: 6,
-          titulo: "Calça Skinny",
-          preco: 55.0,
-          img: "produto6.webp",
-          descricao:
-            "Calça jeans skinny confeccionada com tecido de algodão e elastano, proporcionando ajuste perfeito ao corpo e total liberdade de movimento. Cintura média, bolsos funcionais e costuras reforçadas para maior durabilidade. Ideal para compor looks modernos e despojados, seja no dia a dia ou à noite.",
-          ativo: true,
-          id_vendedor: 200,
-        },
-        {
-          id: 7,
-          titulo: "Blusa de Tricô",
-          preco: 35.75,
-          img: "produto7.jpg",
-          descricao:
-            "Blusa de tricô feminina com toque macio e textura aconchegante. Gola redonda clássica, acabamento canelado nas mangas e barra, modelagem confortável que veste bem todos os tipos de corpo. Ideal para os dias frios, podendo ser usada sozinha ou com sobreposições em visuais estilosos.",
-          ativo: true,
-          id_vendedor: 204,
-        },
-        {
-          id: 8,
-          titulo: "Chapéu Panamá",
-          preco: 25.9,
-          img: "produto8.webp",
-          descricao:
-            "Chapéu Panamá confeccionado em palha sintética de alta resistência, leve e confortável. Design clássico com aba média, faixa decorativa e ótima ventilação, ideal para proteção contra o sol com muito estilo. Perfeito para compor looks de verão em eventos ao ar livre, praias ou passeios urbanos.",
-          ativo: true,
-          id_vendedor: 202,
-        },
-        {
-          id: 9,
-          titulo: "Óculos de Sol",
-          preco: 45.0,
-          img: "produto9.jpeg",
-          descricao:
-            "Óculos de sol com lentes escuras e proteção UV400, garantindo segurança contra raios solares prejudiciais. Armação resistente, leve e com design contemporâneo que combina com diferentes estilos e formatos de rosto. Acompanha estojo rígido, flanela de limpeza e é ideal para uso diário ou viagens.",
-          ativo: true,
-          id_vendedor: 203,
-        },
-      
-    ];
+  const produtos_breshopp = [
+  {
+    id: 1,
+    titulo: "Camisa Polo",
+    preco: 39.9,
+    img: "produto1.jpg",
+    descricao:
+      "Camisa polo masculina em algodão premium, com gola estruturada, costuras reforçadas e ótimo acabamento. Confortável e versátil, ideal para looks casuais ou alinhados. Disponível em várias cores e tamanhos.",
+    ativo: true,
+    id_vendedor: 200,
+  },
+  {
+    id: 2,
+    titulo: "Saia Jeans",
+    preco: 45.99,
+    img: "produto2.webp",
+    descricao:
+      "Saia jeans azul escuro com corte moderno e cintura média. Possui bolsos frontais e traseiros, passantes para cinto e acabamento com lavagem leve. Combina com camisetas e camisas em várias ocasiões.",
+    ativo: true,
+    id_vendedor: 201,
+  },
+  {
+    id: 3,
+    titulo: "Tênis Esportivo",
+    preco: 89.5,
+    img: "produto3.jpeg",
+    descricao:
+      "Tênis unissex com design anatômico, tecido respirável e solado antiderrapante. Palmilha confortável e cadarços reforçados. Ideal para caminhadas, treinos ou uso casual, oferecendo conforto e segurança.",
+    ativo: true,
+    id_vendedor: 202,
+  },
+  {
+    id: 4,
+    titulo: "Vestido Floral",
+    preco: 59.99,
+    img: "produto4.webp",
+    descricao:
+      "Vestido floral feminino com estampa delicada, tecido leve e toque suave. Tem caimento soltinho, alças reguláveis e decote em V. Ideal para o verão e eventos ao ar livre com estilo e frescor.",
+    ativo: true,
+    id_vendedor: 201,
+  },
+  {
+    id: 5,
+    titulo: "Jaqueta de Couro",
+    preco: 120.0,
+    img: "produto5.jpg",
+    descricao:
+      "Jaqueta de couro legítimo com forro térmico, zíper robusto e bolsos funcionais. Gola alta ajustável e acabamento sofisticado. Perfeita para os dias frios com estilo urbano e elegante.",
+    ativo: false,
+    id_vendedor: 203,
+  },
+  {
+    id: 6,
+    titulo: "Calça Skinny",
+    preco: 55.0,
+    img: "produto6.webp",
+    descricao:
+      "Calça jeans skinny em algodão com elastano, garantindo ajuste e conforto. Cintura média, bolsos funcionais e costura reforçada. Ideal para looks modernos no dia a dia ou à noite.",
+    ativo: true,
+    id_vendedor: 200,
+  },
+  {
+    id: 7,
+    titulo: "Blusa de Tricô",
+    preco: 35.75,
+    img: "produto7.jpg",
+    descricao:
+      "Blusa feminina de tricô com gola redonda, acabamento canelado e toque macio. Modelagem confortável, ótima para dias frios. Pode ser usada sozinha ou com sobreposições elegantes.",
+    ativo: true,
+    id_vendedor: 204,
+  },
+  {
+    id: 8,
+    titulo: "Chapéu Panamá",
+    preco: 25.9,
+    img: "produto8.webp",
+    descricao:
+      "Chapéu Panamá em palha sintética leve e resistente, com faixa decorativa e boa ventilação. Estilo clássico para proteção solar. Ideal para looks de verão em passeios, praias ou eventos.",
+    ativo: true,
+    id_vendedor: 202,
+  },
+  {
+    id: 9,
+    titulo: "Óculos de Sol",
+    preco: 45.0,
+    img: "produto9.jpeg",
+    descricao:
+      "Óculos com lentes UV400, armação leve e design moderno. Combina com vários estilos e formatos de rosto. Acompanha estojo rígido e flanela, ideal para uso diário ou viagens.",
+    ativo: true,
+    id_vendedor: 203,
+  },
+];
+
     
     
     
