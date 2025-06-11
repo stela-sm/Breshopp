@@ -75,7 +75,7 @@ descricao.innerHTML = produtos_bd[id-1]['descricao']
 // Preço
 const preco = document.querySelector('.preco');
 preco.innerHTML = 'R$ ' + produtos_bd[id - 1]['preco'].toFixed(2).replace('.', ',') 
-preco.innerHTML += '<small class="!font-sm">no pix</small>'
+preco.innerHTML += " " + '<small class="!font-sm">no pix</small>'
 
 // Estado
 const estado = document.querySelector('.tamanho-circle.bg-pink-300');
