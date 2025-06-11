@@ -98,14 +98,14 @@ function bd() {
 
 
   if (!localStorage.getItem("produtos_breshopp")) {
- const produtos_breshopp = [
+const produtos_breshopp = [
   {
     id: 1,
     titulo: "Camisa Polo",
     preco: 39.9,
     img: "produto1.jpg",
     descricao:
-      "Camisa polo masculina em algodão premium, gola estruturada e confortável. Versátil, ideal para looks casuais ou mais arrumados.",
+      "Camisa polo masculina de algodão premium, gola estruturada e confortável. Ideal para looks casuais ou mais arrumados.",
     ativo: true,
     id_vendedor: 200,
   },
@@ -115,7 +115,7 @@ function bd() {
     preco: 45.99,
     img: "produto2.webp",
     descricao:
-      "Saia jeans azul escuro com corte moderno e cintura média. Com bolsos frontais e passantes para cinto, fácil de combinar.",
+      "Saia jeans com corte moderno e cintura média. Bolsos frontais e passantes para cinto, fácil de combinar.",
     ativo: true,
     id_vendedor: 201,
   },
@@ -125,7 +125,7 @@ function bd() {
     preco: 89.5,
     img: "produto3.jpeg",
     descricao:
-      "Tênis unissex anatômico, respirável e antiderrapante, com palmilha confortável. Perfeito para caminhadas, treinos ou uso casual.",
+      "Tênis unissex anatômico, respirável e antiderrapante. Perfeito para caminhadas, treinos ou uso casual.",
     ativo: true,
     id_vendedor: 202,
   },
@@ -135,7 +135,7 @@ function bd() {
     preco: 59.99,
     img: "produto4.webp",
     descricao:
-      "Vestido floral feminino, feito de tecido leve com alças reguláveis e caimento soltinho. Ótimo para dias de verão e eventos ao ar livre.",
+      "Vestido floral feminino de tecido leve, alças reguláveis e caimento soltinho. Ótimo para o verão e eventos ao ar livre.",
     ativo: true,
     id_vendedor: 201,
   },
@@ -145,7 +145,7 @@ function bd() {
     preco: 120.0,
     img: "produto5.jpg",
     descricao:
-      "Jaqueta de couro legítimo com forro térmico e zíper robusto. Estilo urbano, perfeita para proteger do frio com elegância.",
+      "Jaqueta de couro legítimo com forro térmico, zíper robusto e estilo urbano. Perfeita para os dias frios.",
     ativo: false,
     id_vendedor: 203,
   },
@@ -155,7 +155,7 @@ function bd() {
     preco: 55.0,
     img: "produto6.webp",
     descricao:
-      "Calça skinny em algodão com elastano, garantindo conforto e bom ajuste. Ideal para looks casuais ou mais modernos.",
+      "Calça skinny em algodão com elastano, ajustada e confortável. Ideal para looks modernos no dia a dia.",
     ativo: true,
     id_vendedor: 200,
   },
@@ -165,7 +165,7 @@ function bd() {
     preco: 35.75,
     img: "produto7.jpg",
     descricao:
-      "Blusa feminina de tricô com gola redonda, acabamento canelado e toque macio. Perfeita para dias frios ou sobreposições elegantes.",
+      "Blusa de tricô com gola redonda, acabamento canelado e toque macio. Perfeita para dias frios ou sobreposições.",
     ativo: true,
     id_vendedor: 204,
   },
@@ -175,7 +175,7 @@ function bd() {
     preco: 25.9,
     img: "produto8.webp",
     descricao:
-      "Chapéu Panamá em palha sintética, leve e resistente. Com faixa decorativa, é perfeito para proteção solar e looks de verão.",
+      "Chapéu Panamá em palha sintética, leve e resistente. Ideal para proteção solar e looks de verão.",
     ativo: true,
     id_vendedor: 202,
   },
@@ -185,7 +185,7 @@ function bd() {
     preco: 45.0,
     img: "produto9.jpeg",
     descricao:
-      "Óculos com lentes UV400, armação leve e design moderno. Acompanha estojo rígido e flanela, perfeito para uso diário ou viagens.",
+      "Óculos com lentes UV400, armação leve e design moderno. Acompanha estojo rígido e flanela.",
     ativo: true,
     id_vendedor: 203,
   },
