@@ -105,7 +105,7 @@ function bd() {
     preco: 39.9,
     img: "produto1.jpg",
     descricao:
-      "Camisa polo masculina em algodão premium, com gola estruturada, costuras reforçadas e ótimo acabamento. Confortável e versátil, ideal para looks casuais ou alinhados. Disponível em várias cores e tamanhos.",
+      "Camisa polo masculina em algodão premium, gola estruturada, costuras reforçadas e ótimo acabamento. Confortável e versátil, ideal para looks casuais.",
     ativo: true,
     id_vendedor: 200,
   },
@@ -115,7 +115,7 @@ function bd() {
     preco: 45.99,
     img: "produto2.webp",
     descricao:
-      "Saia jeans azul escuro com corte moderno e cintura média. Possui bolsos frontais e traseiros, passantes para cinto e acabamento com lavagem leve. Combina com camisetas e camisas em várias ocasiões.",
+      "Saia jeans azul escuro com corte moderno e cintura média. Possui bolsos e passantes para cinto, acabamento com lavagem leve.",
     ativo: true,
     id_vendedor: 201,
   },
@@ -125,7 +125,7 @@ function bd() {
     preco: 89.5,
     img: "produto3.jpeg",
     descricao:
-      "Tênis unissex com design anatômico, tecido respirável e solado antiderrapante. Palmilha confortável e cadarços reforçados. Ideal para caminhadas, treinos ou uso casual, oferecendo conforto e segurança.",
+      "Tênis unissex com design anatômico, tecido respirável e solado antiderrapante. Ideal para caminhadas, treinos ou uso casual.",
     ativo: true,
     id_vendedor: 202,
   },
@@ -135,7 +135,7 @@ function bd() {
     preco: 59.99,
     img: "produto4.webp",
     descricao:
-      "Vestido floral feminino com estampa delicada, tecido leve e toque suave. Tem caimento soltinho, alças reguláveis e decote em V. Ideal para o verão e eventos ao ar livre com estilo e frescor.",
+      "Vestido floral feminino com estampa delicada, tecido leve e toque suave. Caimento soltinho, alças reguláveis e decote em V.",
     ativo: true,
     id_vendedor: 201,
   },
@@ -145,7 +145,7 @@ function bd() {
     preco: 120.0,
     img: "produto5.jpg",
     descricao:
-      "Jaqueta de couro legítimo com forro térmico, zíper robusto e bolsos funcionais. Gola alta ajustável e acabamento sofisticado. Perfeita para os dias frios com estilo urbano e elegante.",
+      "Jaqueta de couro legítimo com forro térmico, zíper robusto e bolsos funcionais. Perfeita para os dias frios com estilo urbano.",
     ativo: false,
     id_vendedor: 203,
   },
@@ -155,7 +155,7 @@ function bd() {
     preco: 55.0,
     img: "produto6.webp",
     descricao:
-      "Calça jeans skinny em algodão com elastano, garantindo ajuste e conforto. Cintura média, bolsos funcionais e costura reforçada. Ideal para looks modernos no dia a dia ou à noite.",
+      "Calça jeans skinny em algodão com elastano, garantindo ajuste e conforto. Ideal para looks modernos no dia a dia.",
     ativo: true,
     id_vendedor: 200,
   },
@@ -165,7 +165,7 @@ function bd() {
     preco: 35.75,
     img: "produto7.jpg",
     descricao:
-      "Blusa feminina de tricô com gola redonda, acabamento canelado e toque macio. Modelagem confortável, ótima para dias frios. Pode ser usada sozinha ou com sobreposições elegantes.",
+      "Blusa feminina de tricô com gola redonda, acabamento canelado e toque macio. Modelagem confortável, ótima para dias frios.",
     ativo: true,
     id_vendedor: 204,
   },
@@ -175,7 +175,7 @@ function bd() {
     preco: 25.9,
     img: "produto8.webp",
     descricao:
-      "Chapéu Panamá em palha sintética leve e resistente, com faixa decorativa e boa ventilação. Estilo clássico para proteção solar. Ideal para looks de verão em passeios, praias ou eventos.",
+      "Chapéu Panamá em palha sintética leve e resistente, com faixa decorativa e boa ventilação. Estilo clássico para proteção solar.",
     ativo: true,
     id_vendedor: 202,
   },
@@ -185,14 +185,12 @@ function bd() {
     preco: 45.0,
     img: "produto9.jpeg",
     descricao:
-      "Óculos com lentes UV400, armação leve e design moderno. Combina com vários estilos e formatos de rosto. Acompanha estojo rígido e flanela, ideal para uso diário ou viagens.",
+      "Óculos com lentes UV400, armação leve e design moderno. Acompanha estojo rígido e flanela, ideal para uso diário ou viagens.",
     ativo: true,
     id_vendedor: 203,
   },
 ];
-
-    
-    
+   
     
     
     localStorage.setItem("produtos_breshopp", JSON.stringify(produtos_breshopp));
