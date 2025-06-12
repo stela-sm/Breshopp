@@ -92,5 +92,5 @@ Senha: admbs
 ## 🔗 Links Externos
 
 - [Protótipo do Projeto Integrador](https://www.figma.com/file/YCcFOyid8Ye2k4KrnoOr94/PI---Projeto-Integrador?node-id=3344-284)
-
+- [Site online no Github Pages](https://stela-sm.github.io/Breshopp)
 
